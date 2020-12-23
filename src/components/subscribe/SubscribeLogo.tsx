@@ -18,11 +18,11 @@ const SubscribeLogo = () => (
   <StaticQuery
     query={graphql`
       query SubscribeOverlayLogo {
-        logo: file(relativePath: { eq: "img/ghost-logo.png" }) {
+        logo: file(relativePath: { eq: "img/coding-logo.png" }) {
           childImageSharp {
             # Specify the image processing specifications right in the query.
             # Makes it trivial to update as your page's design changes.
-            fixed(quality: 100 width: 500) {
+            fixed(quality: 100, width: 500) {
               ...GatsbyImageSharpFixed
             }
           }
