@@ -36,10 +36,24 @@ module.exports = {
               wrapperStyle: 'margin-bottom: 1rem',
             },
           },
-          'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
           'gatsby-remark-abbr',
+          {
+            resolve: 'gatsby-remark-mermaid',
+            options: {
+              language: 'mermaid',
+              theme: 'neutral',
+              viewport: {
+                  width: 200,
+                  height: 200
+              },
+              mermaidOptions: {
+                  themeCSS: ""
+              }
+            },
+          },
+          'gatsby-remark-prismjs',
           {
             resolve: 'gatsby-remark-images',
             options: {
