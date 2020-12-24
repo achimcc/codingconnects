@@ -17,4 +17,7 @@ image: 'img/code-movie-cover.jpg'
 
 Why is the job of a developer/coder associated with the male gender?
 
+`youtube:https://www.youtube.com/embed/8VVb6M8pTvE`
+_CODE: Debugging the Gender Gap (Trailer)_
+
 Women earn 57% of all college degrees, but only 18% of all computer science majors.

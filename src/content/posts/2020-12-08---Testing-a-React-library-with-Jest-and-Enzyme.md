@@ -7,9 +7,7 @@ draft: false
 permalink: 'testing-a-react-library-with-jest-and-enzyme'
 category: 'Coding'
 tags:
-  - 'JavaScript'
-  - 'React'
-  - 'TypeScript'
+  - 'Coding'
 excerpt: 'Continuing with the library developed in my last post, I show how to configure a testing environment, define test for the clock component and how to run and interpret those tests.'
 image: 'img/testing.jpg'
 ---
@@ -92,7 +90,7 @@ And after saving and running yarn test, also this test executes without errors.
 
 ### Adding Enzyme to the testing environment
 
-[Enzyme](https://enzymejs.github.io/enzyme/) is a testing library which adds additional features for testing with JS/Typescript and Jest. It provides tool for partial or full Dom rendering of components, and tools which provide selectors for easily accessing and checking parts of the (partially) rendered components to test if they provide the required structure and functionalities, mimicking a jQuery style language for selection.
+[Enzyme](https://enzymejs.github.io/enzyme/) is a testing library which adds additional features for testing with JS/TypeScript and Jest. It provides tool for partial or full Dom rendering of components, and tools which provide selectors for easily accessing and checking parts of the (partially) rendered components to test if they provide the required structure and functionalities, mimicking a jQuery style language for selection.
 
 We first add Enzyme to the project. Since we are using the test setup for developing purposes and not as part of the library which we want to deploy, we have to install the Enzyme components with yarn by adding the -D flag:
 

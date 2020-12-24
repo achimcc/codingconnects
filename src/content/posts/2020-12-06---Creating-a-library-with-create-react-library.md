@@ -1,15 +1,13 @@
 ---
 layout: post
-title: Creating a React Library with Typescript
+title: Creating a React Library with TypeScript
 author: [Achim]
 date: '2020-12-06T09:40:32.169Z'
 draft: false
 permalink: 'creating-a-react-library'
 category: 'Coding'
 tags:
-  - 'JavaScript'
-  - 'React'
-  - 'TypeScript'
+  - 'Coding'
 excerpt: 'I show how to set up a react library which I publish to Github, so I can import it into a React project as a dependency. There is a powerful tool which allows to do a boilerplate approach to build a library: create-react-library.'
 image: 'img/library.jpg'
 ---
@@ -34,7 +32,7 @@ First, we choose a name for the package. Since I prefer to focus on the technica
 
 Therefore, I enter 'achimcc-clock' as package name, and 'A simple React clock' as package description. Next, I enter my GitHub user name (achimcc) and the path to my Github repository (achimcc/achimcc-clock). For the license, I just hit return to publish my module under the MIT license. I select yarn as package manager and typescript as a template, since I develop a TypeScript app:
 ![create-react-library-setup.png](img/create-react-library-setup.png)
-That's it, we've created a React Typescript library. Next we start the development server of the library with:
+That's it, we've created a React TypeScript library. Next we start the development server of the library with:
 
 ```
 cd achimcc-clock && yarn start

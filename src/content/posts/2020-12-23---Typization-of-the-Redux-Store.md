@@ -7,10 +7,7 @@ draft: false
 permalink: 'typization-of-redux-actions'
 category: 'Coding'
 tags:
-  - 'Redux'
-  - 'React'
-  - 'TypeScript'
-  - 'Functional Programming'
+  - 'Coding'
 excerpt: 'I pick up the Redux Architecture which I developed in my last two posts and show how to obtain a typization of the Redux hooks. For this, I introduce and explain discriminated union types.'
 image: 'img/typization.jpg'
 ---
@@ -100,7 +97,7 @@ function printVehicle(vehicle: Vehicle) {
 }
 ```
 
-The Typescript compiler will even fail to compile. This is since the property `vehicle.fuel`doesn't exists on the `vehicle` of sub-type `bike`! What we can do, to fix this, is called type-guarding:
+The TypeScript compiler will even fail to compile. This is since the property `vehicle.fuel`doesn't exists on the `vehicle` of sub-type `bike`! What we can do, to fix this, is called type-guarding:
 
 ```javascript
 function printVehicle(vehicle: Vehicle) {

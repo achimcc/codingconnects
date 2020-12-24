@@ -78,14 +78,14 @@ const About: React.FC = () => (
                   I enjoy finding and drawing connections between unrelated fields, which was one
                   motivation to choose the name Coding Connects for my current blog. It is still in
                   a very early stage in which I try to work out my path towards what I believe is a
-                  good architecture for JavaScript/Typescript Applications, following concepts of
+                  good architecture for JavaScript/TypeScript Applications, following concepts of
                   functional and reactive programming. For the future I want to discuss here
                   connections and applications to my other interests, and political and
                   environmental topics. Hence, I will sort my posts in fundamental categories, where
                   coding relates to the technical posts.
                 </p>
                 <p>
-                  I’m currently working as a JavaScript/Typescript Fullstack Developer with a focus
+                  I’m currently working as a JavaScript/TypeScript Fullstack Developer with a focus
                   on Frontend development. I've worked as a Low-Code Developer, which involved
                   working for many rapid prototyping and POC use cases. I hold a diploma in
                   mathematical physics in Algebraic Quantum Field Theory and I got a PhD in

@@ -1,20 +1,18 @@
 ---
 layout: 'post'
-title: Setting up a Redux Architecture with Typescript
+title: Setting up a Redux Architecture with TypeScript
 author: [Achim]
 date: '2020-12-18T08:00:00.169Z'
 draft: false
 permalink: 'redux-with-typescript'
 category: 'Coding'
 tags:
-  - 'Redux'
-  - 'React'
-  - 'TypeScript'
-excerpt: 'I give an overview about how to set up Redux together with Typescript. Redux is a common library which is used with React for global state management. In this first post, I will focus on how to set up the basic Redux configuration. In subsequent posts, I will discuss possible improvements regarding typization, redux store architecture and testing.'
+  - 'Coding'
+excerpt: 'I give an overview about how to set up Redux together with TypeScript. Redux is a common library which is used with React for global state management. In this first post, I will focus on how to set up the basic Redux configuration.'
 image: 'img/redux-logo.png'
 ---
 
-While I've extensive experience in using Redux for React Apps with JavaScript, I've never used this setup for a Typescript App so far. Therefore, because of my perspective, I might focus on the technical difficulties around Typescript and typization. But I'll try to explain the underlying ideas of Redux as well.
+While I've extensive experience in using Redux for React Apps with JavaScript, I've never used this setup for a TypeScript App so far. Therefore, because of my perspective, I might focus on the technical difficulties around TypeScript and typization. But I'll try to explain the underlying ideas of Redux as well.
 
 ### Motivation for using Redux
 
@@ -45,9 +43,9 @@ reducer -->|update| store([Store])
 store -->|defines| ui
 ```
 
-### Creating a React Typescript App and configuring Redux
+### Creating a React TypeScript App and configuring Redux
 
-I start with a fresh Typescript app, created with create-react-app:
+I start with a fresh TypeScript app, created with create-react-app:
 
 ```
 create-react-app kanban-board --template typescript
@@ -249,4 +247,4 @@ function App() {
 
 ### The final App
 
-Since I want to focus here on the Redux setup in Typescript, I will skip the other details about the. I published it on [https://github.com/achimcc/kanban-naive](https://github.com/achimcc/kanban-naive) and you can test it here: []
+Since I want to focus here on the Redux setup in TypeScript, I will skip the other details about the. I published it on [https://github.com/achimcc/kanban-naive](https://github.com/achimcc/kanban-naive) and you can test it here: []

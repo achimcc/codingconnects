@@ -5,7 +5,7 @@ module.exports = {
   pathPrefix: "/",
   siteMetadata: {
     title: 'Coding Connects',
-    description: 'A Blog about Coding in Typescript and the life in Berlin',
+    description: 'A Blog about Coding in TypeScript and the life in Berlin',
     siteUrl: 'https://codingconnects.com', // full path to blog - no ending slash
   },
   mapping: {
@@ -31,6 +31,13 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          {
+            resolve: "gatsby-remark-embed-youtube",
+            options: {
+              width: 800,
+              height: 400
+            }
+          },
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: {
