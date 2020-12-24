@@ -3,8 +3,8 @@
 <url> <loc>https://codingconnects.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/creating-a-react-library</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/testing-a-react-library-with-jest-and-enzyme</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://codingconnects.com/redux-with-typescript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/improving-redux-store-architecture</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/redux-with-typescript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/typization-of-redux-actions</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/tags/coding/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/author/ghost/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
