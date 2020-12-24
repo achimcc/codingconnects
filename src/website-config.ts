@@ -55,6 +55,7 @@ const config: WebsiteConfig = {
   logo: 'img/coding-logo.png',
   lang: 'en',
   siteUrl: 'https://codingconnects.com',
+  facebook: undefined,
   twitter: 'https://twitter.com/achimcc',
   showSubscribe: false,
   mailchimpAction:
@@ -62,7 +63,7 @@ const config: WebsiteConfig = {
   mailchimpName: 'b_a89b6987ac248c81b0b7f3a0f_7d777b7d75',
   mailchimpEmailFieldName: 'MERGE0',
   googleSiteVerification: 'GoogleCode',
-  footer: 'is based on Gatsby Casper',
+  footer: undefined,
 };
 
 export default config;
