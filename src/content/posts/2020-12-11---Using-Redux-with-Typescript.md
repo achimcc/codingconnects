@@ -8,11 +8,12 @@ permalink: 'redux-with-typescript'
 category: 'Coding'
 tags:
   - 'Coding'
-excerpt: 'I give an overview about how to set up Redux together with TypeScript. Redux is a common library which is used with React for global state management. In this first post, I will focus on how to set up the basic Redux configuration.'
+excerpt: 'I show how to set up Redux together with TypeScript. Redux is a common library that is used with React for global state management. 
+I explain here, how to configure the basic Redux configuration.'
 image: 'img/redux-logo.png'
 ---
 
-While I've extensive experience in using Redux for React Apps with JavaScript, I've never used this setup for a TypeScript App so far. Therefore, because of my perspective, I might focus on the technical difficulties around TypeScript and typization. But I'll try to explain the underlying ideas of Redux as well.
+While I've extensive experience in using Redux in React Apps with JavaScript, I've never used this setup for a TypeScript App so far. Therefore, because of my perspective, I might focus on the technical difficulties around TypeScript and typization. But I'll try to explain the underlying ideas of Redux as well.
 
 ### Motivation for using Redux
 
