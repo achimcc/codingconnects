@@ -18,12 +18,18 @@ import {
 } from '../styles/shared';
 import { NoImage, PostFull, PostFullHeader, PostFullTitle } from '../templates/post';
 import { colors } from '../styles/colors';
+import Achim from './img/achim-siurana.jpg';
 
 const PageTemplate = css`
   .site-main {
     margin-top: 64px;
     padding-bottom: 4vw;
     background: #fff;
+  }
+
+  .photo {
+    max-width: 100%;
+    margin-bottom: 0.3vw;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -51,48 +57,40 @@ const About: React.FC = () => (
         <div css={inner}>
           <article className="post page" css={[PostFull, NoImage]}>
             <PostFullHeader className="post-full-header">
-              <PostFullTitle className="post-full-title">About</PostFullTitle>
+              <PostFullTitle className="post-full-title">About Me</PostFullTitle>
             </PostFullHeader>
 
             <PostFullContent className="post-full-content">
               <div className="post-content">
-                <h5>
-                  A starter template for Gatsby <br /> GitHub: <a href="https://github.com/scttcper/gatsby-casper">scttcper/gatsby-casper</a>
-                </h5>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc commodo finibus leo,
-                  non tempus magna vehicula ac. Maecenas mollis ante finibus pharetra imperdiet.
-                  Maecenas in aliquam purus. Nam et massa a nulla fermentum dapibus sit amet in
-                  neque. Ut ipsum ipsum, rhoncus a sodales pellentesque, interdum a elit. Nullam
-                  aliquam tellus nibh, eget laoreet dui aliquet non. Vestibulum malesuada ante at
-                  diam tempus, ac interdum risus scelerisque. Sed ipsum neque, vulputate porta diam
-                  eget, consequat blandit nulla. Integer volutpat velit vitae purus lacinia aliquam.
-                  Integer bibendum ipsum vitae magna pulvinar, nec vehicula dolor vulputate. Nulla
-                  eu massa id orci placerat finibus vel sit amet eros. Vestibulum quis consequat
-                  massa. Sed sagittis sollicitudin massa at commodo. Praesent diam nisi, imperdiet
-                  posuere eleifend nec, blandit ac massa.
+                  I'm Achim, a Software Developer from Berlin. I’ve a passion for technical ideas
+                  and innovation. My current interest ranges from Blockchain, over IOT to AI/Machine
+                  Learning Applications. I'm interested in how technology interacts with society and
+                  how it affects society towards the future.
                 </p>
                 <p>
-                  Vestibulum semper pretium ipsum nec congue. Ut ac eros nisi. Donec leo sem,
-                  aliquam mollis sapien ultrices, dapibus congue diam. Proin viverra dapibus
-                  blandit. Ut mauris tellus, tristique id felis vel, venenatis vestibulum nunc. Nam
-                  molestie pulvinar nibh, eget egestas augue. Maecenas tellus arcu, mattis ut ipsum
-                  non, sollicitudin convallis nunc. Donec nec neque tristique, aliquet lacus id,
-                  laoreet nunc. Cras dapibus nisi nulla, ullamcorper faucibus neque suscipit ac.
-                  Donec eget orci venenatis justo lobortis volutpat. Proin vel placerat nisl.
-                  Integer arcu nunc, sodales eu fringilla non, aliquam non diam. Cras placerat,
-                  massa et faucibus pretium, ante elit tincidunt tellus, tristique ultricies velit
-                  quam et massa.
+                  <figure>
+                    <img src={Achim} className="photo" />
+                    <figcaption>Me, on climbing vacation in Siurana, Spain.</figcaption>
+                  </figure>
                 </p>
                 <p>
-                  In nunc lacus, dapibus vitae lacus sit amet, efficitur iaculis neque. Suspendisse
-                  ut tellus quis leo vestibulum tincidunt. Aenean nec enim ac dolor lacinia semper.
-                  Ut sed laoreet libero. Nunc elementum sollicitudin accumsan. Nunc eu augue neque.
-                  Proin a tortor nibh. Cras eu nisl ornare sapien feugiat pellentesque. Mauris
-                  dignissim vel quam eu pellentesque. Integer sit amet posuere quam, eu ullamcorper
-                  odio. Nullam a lacus tempus sapien dignissim ullamcorper. In hac habitasse platea
-                  dictumst. Proin quis massa aliquam, feugiat tortor sit amet, tincidunt urna. Donec
-                  posuere pulvinar lectus, ac semper ipsum vulputate quis.
+                  I enjoy finding and drawing connections between unrelated fields, which was one
+                  motivation to choose the name Coding Connects for my current blog. It is still in
+                  a very early stage in which I try to work out my path towards what I believe is a
+                  good architecture for JavaScript/Typescript Applications, following concepts of
+                  functional and reactive programming. For the future I want to discuss here
+                  connections and applications to my other interests, and political and
+                  environmental topics. Hence, I will sort my posts in fundamental categories, where
+                  coding relates to the technical posts.
+                </p>
+                <p>
+                  I’m currently working as a JavaScript/Typescript Fullstack Developer with a focus
+                  on Frontend development. I've worked as a Low-Code Developer, which involved
+                  working for many rapid prototyping and POC use cases. I hold a diploma in
+                  mathematical physics in Algebraic Quantum Field Theory and I got a PhD in
+                  Mathematics while doing research on pseudodifferential equations on singular
+                  spaces.
                 </p>
               </div>
             </PostFullContent>

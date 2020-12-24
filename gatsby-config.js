@@ -2,6 +2,7 @@
 const path = require('path');
 
 module.exports = {
+  pathPrefix: "/codingconnects2",
   siteMetadata: {
     title: 'Coding Connects',
     description: '',
@@ -86,7 +87,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: 'UA-XXXX-Y',
+        trackingId: 'G-G0GMTN0BVG',
         // Puts tracking script in the head instead of the body
         head: true,
         // IP anonymization for GDPR compliance
@@ -101,5 +102,6 @@ module.exports = {
         siteSpeedSampleRate: 10,
       },
     },
+    'gatsby-plugin-cname',
   ],
 };
