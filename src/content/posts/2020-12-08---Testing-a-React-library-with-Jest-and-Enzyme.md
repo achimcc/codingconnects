@@ -11,7 +11,7 @@ tags:
   - 'React'
   - 'TypeScript'
 excerpt: 'Continuing with the library developed in my last post, I show how to configure a testing environment, define test for the clock component and how to run and interpret those tests.'
-image: 'img/42-line-bible.jpg'
+image: 'img/testing.jpg'
 ---
 
 I continue to work with the clock library described in my last post. This time I want to add testing functionalities to my new component. Following a TDD (Test Driven Development) approach, we would write the tests before implementing the component. But for educational purposes I'll do it the other way around this time.

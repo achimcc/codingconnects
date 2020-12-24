@@ -11,7 +11,7 @@ tags:
   - 'React'
   - 'TypeScript'
 excerpt: 'I show how to set up a react library which I publish to Github, so I can import it into a React project as a dependency. There is a powerful tool which allows to do a boilerplate approach to build a library: create-react-library.'
-image: 'img/42-line-bible.jpg'
+image: 'img/library.jpg'
 ---
 
 I show how to set up a react library which I publish to Github, so I can import it into a React project as a dependency. There is a powerful tool which allows to do a boilerplate approach to build a library: [create-react-library](https://www.npmjs.com/package/create-react-library).

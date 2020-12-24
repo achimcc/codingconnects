@@ -12,7 +12,7 @@ tags:
   - 'TypeScript'
   - 'Functional Programming'
 excerpt: 'I pick up the Redux Architecture which I developed in my last two posts and show how to obtain a typization of the Redux hooks. For this, I introduce and explain discriminated union types.'
-image: 'img/immer.jpg'
+image: 'img/typization.jpg'
 ---
 
 I focus in this article on one unsatisfying detail of the Redux setup of the last two posts. There we were dispatching actions to the store, whose types were defined as:
