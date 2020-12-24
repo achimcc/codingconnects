@@ -63,10 +63,10 @@ const About: React.FC = () => (
             <PostFullContent className="post-full-content">
               <div className="post-content">
                 <p>
-                  I'm Achim, a Software Developer from Berlin. I’ve a passion for technical ideas
-                  and innovation. My current interest ranges from Blockchain, over IOT to AI/Machine
-                  Learning Applications. I'm interested in how technology interacts with society and
-                  how it affects society towards the future.
+                  I'm Achim Schneider, a Software Developer from Berlin. I’ve a passion for
+                  technical ideas and innovation. My current interest ranges from Blockchain, over
+                  IOT to AI/Machine Learning Applications. I'm interested in how technology
+                  interacts with society and how it affects society towards the future.
                 </p>
                 <p>
                   <figure>
