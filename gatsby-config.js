@@ -2,10 +2,10 @@
 const path = require('path');
 
 module.exports = {
-  pathPrefix: "/codingconnects2",
+  pathPrefix: "/",
   siteMetadata: {
     title: 'Coding Connects',
-    description: '',
+    description: 'A Blog about Coding in Typescript and the life in Berlin',
     siteUrl: 'https://codingconnects.com', // full path to blog - no ending slash
   },
   mapping: {
