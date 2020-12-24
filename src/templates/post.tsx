@@ -20,6 +20,7 @@ import { colors } from '../styles/colors';
 import { inner, outer, SiteMain } from '../styles/shared';
 import config from '../website-config';
 import { AuthorList } from '../components/AuthorList';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 export interface Author {
   id: string;
@@ -39,9 +40,8 @@ interface PageTemplateProps {
         fixed: any;
       };
     };
-    markdownRemark: {
-      html: string;
-      htmlAst: any;
+    mdx: {
+      body: string;
       excerpt: string;
       timeToRead: string;
       frontmatter: {
@@ -102,7 +102,7 @@ export interface PageContext {
 }
 
 const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
-  const post = data.markdownRemark;
+  const post = data.mdx;
   let width = '';
   let height = '';
   if (post.frontmatter.image?.childImageSharp) {
@@ -229,7 +229,7 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
                   />
                 </PostFullImage>
               )}
-              <PostContent htmlAst={post.htmlAst} />
+              <PostContent body={post.body} />
 
               {/* The big email subscribe modal content */}
               {config.showSubscribe && <Subscribe title={config.title} />}
@@ -445,9 +445,8 @@ export const query = graphql`
         }
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      htmlAst
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       excerpt
       timeToRead
       frontmatter {
@@ -478,7 +477,7 @@ export const query = graphql`
         }
       }
     }
-    relatedPosts: allMarkdownRemark(
+    relatedPosts: allMdx(
       filter: { frontmatter: { tags: { in: [$primaryTag] }, draft: { ne: true } } }
       limit: 5
       sort: { fields: [frontmatter___date], order: DESC }

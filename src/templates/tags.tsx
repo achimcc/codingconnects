@@ -44,7 +44,7 @@ interface TagTemplateProps {
         };
       }>;
     };
-    allMarkdownRemark: {
+    allMdx: {
       totalCount: number;
       edges: Array<{
         node: PageContext;
@@ -55,10 +55,8 @@ interface TagTemplateProps {
 
 const Tags = ({ pageContext, data, location }: TagTemplateProps) => {
   const tag = pageContext.tag ? pageContext.tag : '';
-  const { edges, totalCount } = data.allMarkdownRemark;
-  const tagData = data.allTagYaml.edges.find(
-    n => n.node.id.toLowerCase() === tag.toLowerCase(),
-  );
+  const { edges, totalCount } = data.allMdx;
+  const tagData = data.allTagYaml.edges.find(n => n.node.id.toLowerCase() === tag.toLowerCase());
 
   return (
     <IndexLayout>
@@ -84,10 +82,7 @@ const Tags = ({ pageContext, data, location }: TagTemplateProps) => {
         )}
       </Helmet>
       <Wrapper>
-        <header
-          className="site-archive-header"
-          css={[SiteHeader, SiteArchiveHeader]}
-        >
+        <header className="site-archive-header" css={[SiteHeader, SiteArchiveHeader]}>
           <div css={[outer, SiteNavMain]}>
             <div css={inner}>
               <SiteNav isHome={false} />
@@ -148,7 +143,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
+    allMdx(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] }, draft: { ne: true } } }

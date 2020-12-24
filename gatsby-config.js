@@ -9,7 +9,7 @@ module.exports = {
     siteUrl: 'https://codingconnects.com', // full path to blog - no ending slash
   },
   mapping: {
-    'MarkdownRemark.frontmatter.author': 'AuthorYaml',
+    'Mdx.frontmatter.author': 'AuthorYaml',
   },
   plugins: [
     'gatsby-plugin-sitemap',
@@ -28,9 +28,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        plugins: [
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
           {
             resolve: "gatsby-remark-embed-youtube",
             options: {
@@ -76,7 +77,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://gatsby-casper.netlify.com',
+        siteUrl: 'https://codingconnects.com',
       },
     },
     'gatsby-plugin-typescript',
@@ -84,7 +85,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-yaml',
-    'gatsby-plugin-feed',
+    'gatsby-plugin-feed-mdx',
     {
       resolve: 'gatsby-plugin-postcss',
       options: {

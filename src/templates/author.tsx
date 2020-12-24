@@ -35,7 +35,7 @@ interface AuthorTemplateProps {
         fluid: any;
       };
     };
-    allMarkdownRemark: {
+    allMdx: {
       totalCount: number;
       edges: Array<{
         node: PageContext;
@@ -65,7 +65,7 @@ interface AuthorTemplateProps {
 const Author = ({ data, location }: AuthorTemplateProps) => {
   const author = data.authorYaml;
 
-  const edges = data.allMarkdownRemark.edges.filter(edge => {
+  const edges = data.allMdx.edges.filter(edge => {
     const isDraft = edge.node.frontmatter.draft !== true || process.env.NODE_ENV === 'development';
 
     let authorParticipated = false;
@@ -224,7 +224,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
+    allMdx(
       filter: { frontmatter: { draft: { ne: true } } }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: 2000

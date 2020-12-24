@@ -11,7 +11,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // trip up. An empty string is still required in replacement to `null`.
   // eslint-disable-next-line default-case
   switch (node.internal.type) {
-    case 'MarkdownRemark': {
+    case 'Mdx': {
       const { permalink, layout, primaryTag } = node.frontmatter;
       const { relativePath } = getNode(node.parent);
 
@@ -49,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
-      allMarkdownRemark(
+      allMdx(
         limit: 2000
         sort: { fields: [frontmatter___date], order: ASC }
         filter: { frontmatter: { draft: { ne: true } } }
@@ -116,7 +116,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create post pages
-  const posts = result.data.allMarkdownRemark.edges;
+  const posts = result.data.allMdx.edges;
 
   // Create paginated index
   // TODO: new pagination
@@ -167,7 +167,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const tagTemplate = path.resolve('./src/templates/tags.tsx');
   const tags = _.uniq(
     _.flatten(
-      result.data.allMarkdownRemark.edges.map(edge => {
+      result.data.allMdx.edges.map(edge => {
         return _.castArray(_.get(edge, 'node.frontmatter.tags', []));
       }),
     ),
