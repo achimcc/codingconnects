@@ -29,8 +29,9 @@ export interface ReadNextProps {
 
 export const ReadNextCard: React.FC<ReadNextProps> = props => {
   // filter out current post and limit to 3 related posts
-  const relatedPosts = props.relatedPosts.edges.filter(post => post.node.fields.slug !== props.currentPageSlug).slice(0, 3);
-
+  const relatedPosts = props.relatedPosts.edges
+    .filter(post => post.node.fields.slug !== props.currentPageSlug)
+    .slice(0, 3);
   return (
     <ReadNextCardArticle className="read-next-card">
       <header className="read-next-card-header">
@@ -50,7 +51,7 @@ export const ReadNextCard: React.FC<ReadNextProps> = props => {
             return (
               <li key={n.node.frontmatter.title}>
                 <h4>
-                  <Link to={n.node.fields.slug}>{n.node.frontmatter.title}</Link>
+                  <Link to={`/${n.node.fields.slug}`}>{n.node.frontmatter.title}</Link>
                 </h4>
                 <ReadNextCardMeta className="read-next-card-meta">
                   <p>

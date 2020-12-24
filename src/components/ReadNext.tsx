@@ -35,7 +35,6 @@ interface ReadNextProps {
 
 export const ReadNext = ({ relatedPosts, currentPageSlug, tags, pageContext }: ReadNextProps) => {
   const showRelatedPosts = relatedPosts.totalCount > 1;
-
   return (
     <ReadNextAside className="read-next" css={outer}>
       <div css={inner}>

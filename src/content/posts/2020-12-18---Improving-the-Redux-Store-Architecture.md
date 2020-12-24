@@ -185,7 +185,6 @@ interface IStatus {
 const uiReducer = (state: UIState = initialState, action: TaskAction): UIState => {
   switch (action.type) {
     case TaskActions.Create: {
-      console.log('ui create', action.payload);
       const { id } = action.payload;
       const newStatus = {
         ...state.status,

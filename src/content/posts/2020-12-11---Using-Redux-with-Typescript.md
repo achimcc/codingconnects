@@ -122,7 +122,6 @@ export function addTask(taskTitle: string): TaskAction {
 }
 
 export function updateTask(taskId: Number, status: TaskStatus): TaskAction {
-  console.log('updateTaskCreator ');
   const action: TaskAction = {
     type: TaskActions.SetStatus,
     payload: { status, taskId },
@@ -168,8 +167,6 @@ const initialState: TasksState = {
 };
 
 const itemListReducer = (state: TasksState = initialState, action: TaskAction): TasksState => {
-  console.log('reducer!', state, action);
-
   switch (action.type) {
     case TaskActions.Create:
       const newItem: ITask = {

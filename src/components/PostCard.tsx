@@ -32,7 +32,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
       css={[PostCardStyles, large && PostCardLarge]}
     >
       {post.frontmatter.image && (
-        <Link className="post-card-image-link" css={PostCardImageLink} to={post.fields.slug}>
+        <Link className="post-card-image-link" css={PostCardImageLink} to={`/${post.fields.slug}`}>
           <PostCardImage className="post-card-image">
             {post.frontmatter?.image?.childImageSharp?.fluid && (
               <Img
@@ -45,7 +45,11 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
         </Link>
       )}
       <PostCardContent className="post-card-content">
-        <Link className="post-card-content-link" css={PostCardContentLink} to={post.fields.slug}>
+        <Link
+          className="post-card-content-link"
+          css={PostCardContentLink}
+          to={`/${post.fields.slug}`}
+        >
           <PostCardHeader className="post-card-header">
             {post.frontmatter.tags && (
               <PostCardPrimaryTag className="post-card-primary-tag">

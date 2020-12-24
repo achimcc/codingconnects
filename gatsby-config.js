@@ -69,7 +69,7 @@ module.exports = {
               quality: 100,
             },
           },
-          'gatsby-remark-prismjs'
+          'gatsby-remark-prismjs',
         ],
       },
     },
