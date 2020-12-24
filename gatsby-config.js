@@ -46,8 +46,8 @@ module.exports = {
             },
           },
           'gatsby-remark-copy-linked-files',
+          // 'gatsby-remark-abbr', removed, didn't work together with mdx plugin!
           'gatsby-remark-smartypants',
-          'gatsby-remark-abbr',
           {
             resolve: 'gatsby-remark-mermaid',
             options: {
@@ -62,7 +62,6 @@ module.exports = {
               }
             },
           },
-          'gatsby-remark-prismjs',
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -70,6 +69,7 @@ module.exports = {
               quality: 100,
             },
           },
+          'gatsby-remark-prismjs'
         ],
       },
     },
