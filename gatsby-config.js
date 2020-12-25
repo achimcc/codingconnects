@@ -85,7 +85,61 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-yaml',
-    'gatsby-plugin-feed-mdx',
+    {
+      resolve: 'gatsby-plugin-feed-mdx',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                site_url: url
+                title
+                description: subtitle
+              }
+            }
+          }
+        `,
+        feeds: [{
+          serialize: ({ query: { site, allMdx } }) => (
+            allMdx.edges.map((edge) => ({
+              ...edge.node.frontmatter,
+              excerpt: edge.node.frontmatter.excerpt,
+              date: edge.node.frontmatter.date,
+              url: site.siteMetadata.site_url + '/' + edge.node.fields.slug,
+              guid: site.siteMetadata.site_url + '/' + edge.node.fields.slug,
+              custom_elements: [{ 'content:encoded': edge.node.body }]
+            }))
+          ),
+          query: `
+              {
+                allMdx(
+                  limit: 1000,
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                  filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }
+                ) {
+                  edges {
+                    node {
+                      body
+                      fields {
+                        slug
+                      }
+                      frontmatter {
+                        title
+                        date
+                        layout
+                        draft
+                        excerpt
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+          output: '/rss.xml',
+          title: 'Coding Connects'
+        }]
+      }
+    },
     {
       resolve: 'gatsby-plugin-postcss',
       options: {
