@@ -20,7 +20,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       if (!slug) {
         slug = `/${relativePath.replace('.md', '')}/`;
       }
-      console.log('### here slug: ', slug, node)
+      console.log('### here slug: ', slug, createNodeField)
       // Used to generate URL to view this content.
       createNodeField({
         node,
