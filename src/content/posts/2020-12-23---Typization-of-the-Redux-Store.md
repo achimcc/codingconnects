@@ -30,7 +30,7 @@ What I use to obtain a strong typization of the redux actions together with the 
 
 ### Singletons and Union Types
 
-A [Singleton](<https://en.wikipedia.org/wiki/Singleton_(mathematics)>) in mathematics, is a [set](<https://en.wikipedia.org/wiki/Set_(mathematics)>) which contains exactly one element. In TypeSCript, if we understand a set as all elements of a specific type, the type of objects(elements) is defining the sets containing of all possible objects of the specific type. Here a singleton type, whose only possible object's value is identical with the object's type. While we can see "Cat" as an object of type string, we can also consider it as being the only object of type "Cat".
+A [Singleton](<https://en.wikipedia.org/wiki/Singleton_(mathematics)>) in mathematics, is a [set](<https://en.wikipedia.org/wiki/Set_(mathematics)>) which contains exactly one element. In TypeScript, if we understand a set as all existing elements of a specific type, the type of objects(elements) is defining the sets containing all the possible objects of the specific type. Here a singleton type is a type, whose only possible object's value is identical with the object's type. While we can see "Cat" as an object of type string, we can also understand it as the only object type "Cat".
 
 Hence, constants can be understood as Singletons:
 
@@ -64,21 +64,21 @@ In practice, Union Types don't seem to provide a big advantage, compared to the 
 We can define a type by combining different interfaces which share some but not all of their properties:
 
 ```javascript
-interface IBike = {
+interface Bike = {
   type: "bike";
   wheels: 2;
 }
 
-interface ICar = {
+interface Car = {
   type: "car";
   wheels: number;
   fuel: string;
 }
 
-type Vehicle = IBike | ICar;
+type Vehicle = Bike | Car;
 ```
 
-We have a new type which either has the Properties defined in `ICar` or the properties defined in `IBike`, but it will always have the properties which are in the intersection of properties of both of them, these are the properties `type` and wheels!
+We have a new type which either has the Properties defined in `Car` or the properties defined in `Bike`, but it will always have the properties which are in the intersection of properties of both of them, these are the properties `type` and wheels!
 
 We can define a function which receives a vehicle as input:
 
@@ -122,7 +122,7 @@ I redefine the type and interface by using discriminant union types:
 ```javascript
 // /src/type.d.ts
 
-interface ITask {
+interface Task {
   id: number;
   title: string;
   status: import("./common").TaskStatus;
@@ -130,24 +130,24 @@ interface ITask {
 
 type Actions = "CREATE" | "SET_STATUS" | "DELETE";
 
-interface IActionCreate {
+interface ActionCreate {
   type: "CREATE";
   title: string;
   id: number;
 }
 
-interface IActionSetStatus {
+interface ActionSetStatus {
   type: "SET_STATUS";
   id: number;
   status: import("./common").TaskStatus;
 }
 
-interface IActionDelete {
+interface ActionDelete {
   type: "DELETE";
   id: number;
 }
 
-type TaskAction = IActionCreate | IActionSetStatus | IActionDelete;
+type TaskAction = ActionCreate | ActionSetStatus | ActionDelete;
 
 type TasksState = {
   tasks: {
@@ -160,7 +160,7 @@ type UIState = {
   taskStatus: Object<Array<number>>;
 };
 
-interface IRootState {
+interface RootState {
   data: TasksState;
   ui: UISTate;
 }
@@ -283,7 +283,7 @@ function useDispatch(): DispatchType {
   return (action: TaskAction) => dispatch(action);
 }
 
-export { store, useSDispatch };
+export { store, useDispatch };
 ```
 
 This is already a typed version of the `useDispatch` hook. If we import our custom `useDispatch` hook from `/src/store.index.ts` instead of `react-redux` everywhere in the project, this already guarantees type safety for our dispatcher!
@@ -296,9 +296,9 @@ import { createSelectorHook, useDispatch as _useDispatch } from "react-redux";
 
 ...
 
-const _useSelector = createSelectorHook<IRootState>();
+const _useSelector = createSelectorHook<RootState>();
 
-function useSelector<T>(fn: (store: IRootState) => T): T {
+function useSelector<T>(fn: (store: RootState) => T): T {
   return fn(_useSelector((x) => x));
 }
 
@@ -329,9 +329,9 @@ function useDispatch(): DispatchType {
   return (action: TaskAction) => dispatch(action);
 }
 
-const _useSelector = createSelectorHook<IRootState>();
+const _useSelector = createSelectorHook<RootState>();
 
-function useSelector<T>(fn: (store: IRootState) => T): T {
+function useSelector<T>(fn: (store: RootState) => T): T {
   return fn(_useSelector((x) => x));
 }
 
