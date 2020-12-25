@@ -1,8 +1,8 @@
 ---
 layout: 'post'
-title: Setting up a Redux Architecture with TypeScript
+title: Setting up Redux with TypeScript
 author: [Achim]
-date: '2020-12-18T08:00:00.169Z'
+date: '2020-12-11T08:00:00.169Z'
 draft: false
 permalink: 'redux-with-typescript'
 category: 'Coding'
