@@ -9,7 +9,7 @@ category: 'Coding'
 tags:
   - 'Coding'
 excerpt: 'I show how to set up Redux together with TypeScript. Redux is a common library that is used with React for global state management. 
-I explain here, how to configure the basic Redux configuration.'
+I explain how to configure the basic Redux configuration.'
 image: 'img/warehouse.jpg'
 ---
 
