@@ -53,42 +53,41 @@ Next, we can add a new file clock.tsx to the source directory of our library, im
 ```javascript
 // /src/clock.tsx:
 
-import * as React from 'react';
-import styles from './styles.module.css';
+import * as React from 'react'
 
 interface Props {
-  hours: number;
-  minutes: number;
+  hours: number
+  minutes: number
 }
 
 const append = (digit: number): string => {
-  if (digit < 10) return `0${digit}`;
-  else return `${digit}`;
-};
+  if (digit < 10) return `0${digit}`
+  else return `${digit}`
+}
+
+const clockStyles = {
+  padding: '6px',
+  height: 'auto',
+  border: '4px solid',
+  borderRadius: '10px',
+  display: 'inline-block',
+  margin: '1em',
+  fontSize: '2em',
+  fontWeight: 'bold' as 'bold'
+}
 
 const Clock = ({ hours, minutes }: Props) => {
   return (
-    <div className={styles.clock}>
+    <div style={clockStyles}>
       {append(hours)}:{append(minutes)}
     </div>
-  );
-};
-
-export default Clock;
-```
-
-And add the CSS definitions to the styles.module.css file:
-
-```css
-/* /src/styles.module.css: */
-
-.clock {
-  padding: 4px;
-  border: 2px solid #000;
-  border-radius: 10px;
-  display: inline-block;
+  )
 }
+
+export default Clock
 ```
+
+I used inline styling here for the CSS definitions. An alternative would be to use CSS modules. But then, we would need to import the css definitions in our project, together with our library components. For larger projects, the best solution would might be, to use [styled-components](https://styled-components.com/).
 
 We add to lines to index.tsx, since we want to export our new clock component:
 
@@ -161,3 +160,19 @@ Now enter your username and password. Then we can publish the library, by typing
 ```
 yarn deploy
 ```
+
+### Importing the component to your project
+
+The published component is available and can we can import it into our projects! I can even import it into my Gatsby Blog with [MDX](https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/), by typing:
+
+```jsx
+import { Clock } from 'achimcc-clock';
+
+<Clock hours={12} minutes={15} />;
+```
+
+Here it is:
+
+import {Clock} from "achimcc-clock"
+
+<Clock hours={12} minutes={15} />
