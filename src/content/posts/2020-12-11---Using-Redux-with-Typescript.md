@@ -10,7 +10,7 @@ tags:
   - 'Coding'
 excerpt: 'I show how to set up Redux together with TypeScript. Redux is a common library that is used with React for global state management. 
 I explain here, how to configure the basic Redux configuration.'
-image: 'img/redux-logo.png'
+image: 'img/warehouse.jpg'
 ---
 
 While I've extensive experience in using Redux in React Apps with JavaScript, I've never used this setup for a TypeScript App so far. Therefore, because of my perspective, I might focus on the technical difficulties around TypeScript and typization. But I'll try to explain the underlying ideas of Redux as well.

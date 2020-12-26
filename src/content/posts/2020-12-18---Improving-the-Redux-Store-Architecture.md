@@ -8,11 +8,11 @@ permalink: 'improving-redux-store-architecture'
 category: 'Coding'
 tags:
   - 'Coding'
-excerpt: 'I continue with the App which I created in my last post. I discuss different techniques which lead to a cleaner React/Redux/TypeScript Architecture.'
-image: 'img/immer.jpg'
+excerpt: 'I continue with the App which I created in my last post. I discuss different techniques that improve the structure of the React/Redux/TypeScript Architecture.'
+image: 'img/structure.jpg'
 ---
 
-I continue with the App which I created in my last post. I discuss different techniques which lead to a cleaner React/Redux/TypeScript Architecture.
+I continue with the App which I created in my last post. I discuss different techniques that improve the structure of the React/Redux/TypeScript Architecture.
 
 ### State Normalization
 
