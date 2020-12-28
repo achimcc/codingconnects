@@ -57,7 +57,7 @@ const config: WebsiteConfig = {
   lang: 'en',
   siteUrl: 'https://codingconnects.com',
   facebook: undefined,
-  mail: 'codingconnects@posteo.de',
+  mail: 'mailto:codingconnects@posteo.de',
   twitter: 'https://twitter.com/achimcc',
   showSubscribe: false,
   mailchimpAction:
