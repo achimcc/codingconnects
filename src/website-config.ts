@@ -16,9 +16,10 @@ export interface WebsiteConfig {
    * full url, no username
    */
   facebook?: string;
+  mail?: string;
   /**
    * full url, no username
-   */
+   **/
   twitter?: string;
   /**
    * hide or show all email subscribe boxes
@@ -56,6 +57,7 @@ const config: WebsiteConfig = {
   lang: 'en',
   siteUrl: 'https://codingconnects.com',
   facebook: undefined,
+  mail: 'codingconnects@posteo.de',
   twitter: 'https://twitter.com/achimcc',
   showSubscribe: false,
   mailchimpAction:

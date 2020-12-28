@@ -27,6 +27,11 @@ export const Footer: React.FC = () => {
               Facebook
             </a>
           )}
+          {config.mail && (
+            <a href={config.mail} target="_blank" rel="noopener noreferrer">
+              Mail
+            </a>
+          )}
           {config.twitter && (
             <a href={config.twitter} target="_blank" rel="noopener noreferrer">
               Twitter
