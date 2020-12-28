@@ -181,6 +181,7 @@ module.exports = {
         postCssPlugins: [require('postcss-color-function'), require('cssnano')()],
       },
     },
+    /*
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
@@ -198,6 +199,15 @@ module.exports = {
         // Determines how often site speed tracking beacons will be sent
         siteSpeedSampleRate: 10,
       },
+    },*/
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: ['G-G0GMTN0BVG'],
+        pluginConfig: {
+          head: true
+        }
+      }
     },
     'gatsby-plugin-cname',
   ],
