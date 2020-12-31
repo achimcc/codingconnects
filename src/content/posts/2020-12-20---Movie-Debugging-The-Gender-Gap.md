@@ -3,7 +3,7 @@ layout: 'post'
 title: Movie `:` Debugging the Gender Gap
 author: [Achim]
 date: '2020-12-20T08:00:00.169Z'
-draft: true
+draft: false
 permalink: 'debugging-the-gender-gap'
 category: 'Digital Life'
 tags:
@@ -20,7 +20,11 @@ Why is the job of a developer/coder associated with the male gender?
 `youtube:https://www.youtube.com/embed/8VVb6M8pTvE`
 _CODE: Debugging the Gender Gap (Trailer)_
 
-Women earn 57% of all college degrees, but only 18% of all computer science majors.
+Women earn 57% of all college degrees, but
+
+<script src="http://gist-it.appspot.com/github/robertkrimen/gist-it-example/blob/master/example.js">test</script>
+
+only 18% of all computer science majors.
 
 import {Clock} from "achimcc-clock";
 

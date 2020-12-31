@@ -63,9 +63,9 @@ const About: React.FC = () => (
             <PostFullContent className="post-full-content">
               <div className="post-content">
                 <p>
-                  I'm Achim Schneider, a Software Developer from Berlin. I’ve a passion for
+                  I’m Achim Schneider, a Software Developer from Berlin. I’m passionate about
                   technical ideas and innovation. My current interest ranges from Blockchain, over
-                  IOT to AI/Machine Learning Applications. I'm interested in how technology
+                  IOT to AI/Machine Learning Applications. I’m interested in how technology
                   interacts with society and how it affects society towards the future.
                 </p>
                 <p>
@@ -79,18 +79,17 @@ const About: React.FC = () => (
                   motivation to choose the name Coding Connects for my current blog. It is still in
                   a very early stage in which I try to work out my path towards what I believe is a
                   good architecture for JavaScript/TypeScript Applications, following concepts of
-                  functional and reactive programming. For the future I want to discuss here
+                  functional and reactive programming. For the future I plan to discuss here
                   connections and applications to my other interests, and political and
                   environmental topics. Hence, I will sort my posts in fundamental categories, where
                   coding relates to the technical posts.
                 </p>
                 <p>
-                  I’m currently working as a JavaScript/TypeScript Fullstack Developer with a focus
-                  on Frontend development. I've worked as a Low-Code Developer, which involved
-                  working for many rapid prototyping and POC use cases. I hold a diploma in
-                  mathematical physics in Algebraic Quantum Field Theory and I got a PhD in
-                  Mathematics while doing research on pseudodifferential equations on singular
-                  spaces.
+                  I’m working as a JavaScript/TypeScript Fullstack Developer with a focus on
+                  Frontend development. I’ve worked as a Low-Code Developer, which involved working
+                  for many rapid prototyping and POC use cases. I hold a diploma in mathematical
+                  physics in Algebraic Quantum Field Theory, and I got a PhD in Mathematics while
+                  doing research on pseudodifferential equations on singular spaces.
                 </p>
               </div>
             </PostFullContent>
