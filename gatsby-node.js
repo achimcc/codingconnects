@@ -12,7 +12,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // eslint-disable-next-line default-case
   switch (node.internal.type) {
     case 'Mdx': {
-      const { permalink, layout, primaryTag } = node.frontmatter;
+      const { permalink, layout, primaryTag, category } = node.frontmatter;
       const { relativePath } = getNode(node.parent);
 
       let slug = permalink;
@@ -39,6 +39,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         name: 'primaryTag',
         value: primaryTag || '',
       });
+
+      createNodeField({
+        node,
+        name: 'category',
+        value: category || '',
+      });
     }
   }
 };
@@ -62,6 +68,7 @@ exports.createPages = async ({ graphql, actions }) => {
               tags
               date
               draft
+              category
               excerpt
               image {
                 childImageSharp {
@@ -158,6 +165,7 @@ exports.createPages = async ({ graphql, actions }) => {
         prev,
         next,
         primaryTag: node.frontmatter.tags ? node.frontmatter.tags[0] : '',
+        category: node.frontmatter.category || '',
       },
     });
   });

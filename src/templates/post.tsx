@@ -56,6 +56,7 @@ interface PageTemplateProps {
         excerpt: string;
         tags: string[];
         author: Author[];
+        category: string;
       };
     };
     relatedPosts: {
@@ -98,6 +99,7 @@ export interface PageContext {
     draft?: boolean;
     tags: string[];
     author: Author[];
+    category?: string;
   };
 }
 
