@@ -11,6 +11,7 @@ import { ReadNextCard } from './ReadNextCard';
 
 interface ReadNextProps {
   tags: string[];
+  category?: string;
   currentPageSlug: string;
   relatedPosts: {
     totalCount: number;
@@ -33,7 +34,13 @@ interface ReadNextProps {
   };
 }
 
-export const ReadNext = ({ relatedPosts, currentPageSlug, tags, pageContext }: ReadNextProps) => {
+export const ReadNext = ({
+  relatedPosts,
+  currentPageSlug,
+  tags,
+  category,
+  pageContext,
+}: ReadNextProps) => {
   const showRelatedPosts = relatedPosts.totalCount > 1;
   return (
     <ReadNextAside className="read-next" css={outer}>
@@ -43,6 +50,7 @@ export const ReadNext = ({ relatedPosts, currentPageSlug, tags, pageContext }: R
             <ReadNextCard
               currentPageSlug={currentPageSlug}
               tags={tags}
+              category={category}
               relatedPosts={relatedPosts}
             />
           )}

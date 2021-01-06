@@ -23,6 +23,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
   const datetime = format(date, 'yyyy-MM-dd');
   // 20 AUG 2018
   const displayDatetime = format(date, 'dd LLL yyyy');
+  console.log('### frontmatter: ', post.frontmatter.category);
 
   return (
     <article
@@ -51,9 +52,9 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
           to={`/${post.fields.slug}`}
         >
           <PostCardHeader className="post-card-header">
-            {post.frontmatter.tags && (
+            {post.frontmatter.category && (
               <PostCardPrimaryTag className="post-card-primary-tag">
-                {post.frontmatter.tags[0]}
+                {post.frontmatter.category}
               </PostCardPrimaryTag>
             )}
             <PostCardTitle className="post-card-title">{post.frontmatter.title}</PostCardTitle>

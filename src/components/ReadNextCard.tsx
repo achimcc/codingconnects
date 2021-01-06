@@ -9,6 +9,7 @@ import { format } from 'date-fns';
 
 export interface ReadNextProps {
   tags: string[];
+  category?: string;
   currentPageSlug: string;
   relatedPosts: {
     totalCount: number;

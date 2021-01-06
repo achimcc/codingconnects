@@ -178,6 +178,7 @@ export const pageQuery = graphql`
             tags
             draft
             excerpt
+            category
             image {
               childImageSharp {
                 fluid(maxWidth: 3720) {

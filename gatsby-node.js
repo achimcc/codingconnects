@@ -51,6 +51,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allMdx(
         limit: 2000
         sort: { fields: [frontmatter___date], order: ASC }
+        filter: { frontmatter: { draft: { ne: true } } }
       ) {
         edges {
           node {
@@ -62,6 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
               date
               draft
               excerpt
+              category
               image {
                 childImageSharp {
                   fluid(maxWidth: 3720) {

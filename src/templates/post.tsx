@@ -55,6 +55,7 @@ interface PageTemplateProps {
         };
         excerpt: string;
         tags: string[];
+        category?: string;
         author: Author[];
       };
     };
@@ -98,6 +99,7 @@ export interface PageContext {
     draft?: boolean;
     tags: string[];
     author: Author[];
+    category?: string;
   };
 }
 
@@ -137,8 +139,8 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
         <meta property="article:published_time" content={post.frontmatter.date} />
         {/* not sure if modified time possible */}
         {/* <meta property="article:modified_time" content="2018-08-20T15:12:00.000Z" /> */}
-        {post.frontmatter.tags && (
-          <meta property="article:tag" content={post.frontmatter.tags[0]} />
+        {post.frontmatter.category && (
+          <meta property="article:tag" content={post.frontmatter.category} />
         )}
 
         {config.facebook && <meta property="article:publisher" content={config.facebook} />}
@@ -186,9 +188,9 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
             <article css={[PostFull, !post.frontmatter.image && NoImage]}>
               <PostFullHeader className="post-full-header">
                 <PostFullTags className="post-full-tags">
-                  {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+                  {post.frontmatter.category && post.frontmatter.tags.length > 0 && (
                     <Link to={`/tags/${_.kebabCase(post.frontmatter.tags[0])}/`}>
-                      {post.frontmatter.tags[0]}
+                      {post.frontmatter.category}
                     </Link>
                   )}
                 </PostFullTags>

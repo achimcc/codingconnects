@@ -1,8 +1,8 @@
 ---
 layout: 'post'
-title: Movie `:` Debugging the Gender Gap
+title: Debugging the Gender Gap
 author: [Achim]
-date: '2020-12-20T08:00:00.169Z'
+date: '2021-01-06T08:00:00.169Z'
 draft: false
 permalink: 'debugging-the-gender-gap'
 category: 'Digital Life'
