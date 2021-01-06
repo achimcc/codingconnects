@@ -51,7 +51,6 @@ exports.createPages = async ({ graphql, actions }) => {
       allMdx(
         limit: 2000
         sort: { fields: [frontmatter___date], order: ASC }
-        filter: { frontmatter: { draft: { ne: true } } }
       ) {
         edges {
           node {

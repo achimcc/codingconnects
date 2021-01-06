@@ -3,7 +3,7 @@ layout: 'post'
 title: Typization of the Redux Store
 author: [Achim]
 date: '2020-12-23T08:00:00.169Z'
-draft: false
+draft: true
 permalink: 'testing-redux-components'
 category: 'Coding'
 tags:
