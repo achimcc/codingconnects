@@ -4,7 +4,7 @@ title: Testing a React Library with Jest and Enzyme
 author: [Achim]
 date: '2020-12-08T09:40:32.169Z'
 draft: false
-permalink: 'testing-a-react-library-with-jest-and-enzyme'
+permalink: 'testing-a-react-library'
 category: 'Coding'
 tags:
   - 'Coding'
