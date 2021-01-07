@@ -12,6 +12,7 @@ import { Facebook } from '../icons/facebook';
 import { Twitter } from '../icons/twitter';
 import { SubscribeModal } from '../subscribe/SubscribeModal';
 import { SiteNavLogo } from './SiteNavLogo';
+import { Categories } from './Categories';
 
 interface SiteNavProps {
   isHome?: boolean;
@@ -93,6 +94,7 @@ class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
                 <li role="menuitem">
                   <Link to="/">Home</Link>
                 </li>
+                <Categories />
                 <li role="menuitem">
                   <Link to="/about">About Me</Link>
                 </li>
@@ -161,7 +163,7 @@ const SiteNavStyles = css`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  overflow-y: hidden;
+  overflow-y: visible;
   height: 64px;
   font-size: 1.3rem;
 `;
@@ -171,7 +173,7 @@ const SiteNavLeft = styled.div`
   display: flex;
   align-items: center;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible;
   -webkit-overflow-scrolling: touch;
   margin-right: 10px;
   padding: 10px 0 80px;
@@ -194,8 +196,8 @@ const SiteNavContent = styled.div`
 `;
 
 const NavStyles = css`
-  position: absolute;
-  z-index: 1000;
+  position: relative;
+  z-index: 100;
   display: flex;
   margin: 0 0 0 -12px;
   padding: 0;
