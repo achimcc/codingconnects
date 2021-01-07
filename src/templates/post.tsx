@@ -140,7 +140,7 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
         {/* not sure if modified time possible */}
         {/* <meta property="article:modified_time" content="2018-08-20T15:12:00.000Z" /> */}
         {post.frontmatter.category && (
-          <meta property="article:tag" content={post.frontmatter.tags[0]} />
+          <meta property="article:tag" content={post.frontmatter.category} />
         )}
 
         {config.facebook && <meta property="article:publisher" content={config.facebook} />}
@@ -158,7 +158,9 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
         <meta name="twitter:label1" content="Written by" />
         <meta name="twitter:data1" content={post.frontmatter.author[0].id} />
         <meta name="twitter:label2" content="Filed under" />
-        {post.frontmatter.tags && <meta name="twitter:data2" content={post.frontmatter.tags[0]} />}
+        {post.frontmatter.category && (
+          <meta name="twitter:data2" content={post.frontmatter.category} />
+        )}
         {config.twitter && (
           <meta
             name="twitter:site"
@@ -188,9 +190,9 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
             <article css={[PostFull, !post.frontmatter.image && NoImage]}>
               <PostFullHeader className="post-full-header">
                 <PostFullTags className="post-full-tags">
-                  {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-                    <Link to={`/tags/${_.kebabCase(post.frontmatter.tags[0])}/`}>
-                      {post.frontmatter.tags[0]}
+                  {post.frontmatter.category && post.frontmatter.category.length > 0 && (
+                    <Link to={`/categories/${_.kebabCase(post.frontmatter.category)}/`}>
+                      {post.frontmatter.category}
                     </Link>
                   )}
                 </PostFullTags>
@@ -241,6 +243,7 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
 
         <ReadNext
           currentPageSlug={location.pathname}
+          category={post.frontmatter.category}
           tags={post.frontmatter.tags}
           relatedPosts={data.relatedPosts}
           pageContext={pageContext}
@@ -439,7 +442,7 @@ const PostFullImage = styled.figure`
 `;
 
 export const query = graphql`
-  query($slug: String, $primaryTag: String) {
+  query($slug: String, $category: String) {
     logo: file(relativePath: { eq: "img/coding-logo.png" }) {
       childImageSharp {
         fixed {
@@ -456,6 +459,7 @@ export const query = graphql`
         userDate: date(formatString: "D MMMM YYYY")
         date
         tags
+        category
         excerpt
         image {
           childImageSharp {
@@ -480,7 +484,7 @@ export const query = graphql`
       }
     }
     relatedPosts: allMdx(
-      filter: { frontmatter: { tags: { in: [$primaryTag] }, draft: { ne: true } } }
+      filter: { frontmatter: { category: { eq: $category }, draft: { ne: true } } }
       limit: 5
       sort: { fields: [frontmatter___date], order: DESC }
     ) {

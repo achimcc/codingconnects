@@ -182,6 +182,25 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
+  // Create category pages
+  const categoryTemplate = path.resolve('./src/templates/categories.tsx');
+  const categories = _.uniq(
+    _.flatten(
+      result.data.allMdx.edges.map(edge => {
+        return _.castArray(_.get(edge, 'node.frontmatter.category', ''));
+      }),
+    ),
+  );
+  categories.forEach(category => {
+    createPage({
+      path: `/categories/${_.kebabCase(category)}/`,
+      component: categoryTemplate,
+      context: {
+        category,
+      },
+    });
+  });
+
   // Create author pages
   const authorTemplate = path.resolve('./src/templates/author.tsx');
   result.data.allAuthorYaml.edges.forEach(edge => {
