@@ -140,7 +140,7 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
         {/* not sure if modified time possible */}
         {/* <meta property="article:modified_time" content="2018-08-20T15:12:00.000Z" /> */}
         {post.frontmatter.category && (
-          <meta property="article:tag" content={post.frontmatter.category} />
+          <meta property="article:tag" content={post.frontmatter.tags[0]} />
         )}
 
         {config.facebook && <meta property="article:publisher" content={config.facebook} />}
@@ -188,9 +188,9 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
             <article css={[PostFull, !post.frontmatter.image && NoImage]}>
               <PostFullHeader className="post-full-header">
                 <PostFullTags className="post-full-tags">
-                  {post.frontmatter.category && post.frontmatter.tags.length > 0 && (
+                  {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
                     <Link to={`/tags/${_.kebabCase(post.frontmatter.tags[0])}/`}>
-                      {post.frontmatter.category}
+                      {post.frontmatter.tags[0]}
                     </Link>
                   )}
                 </PostFullTags>
