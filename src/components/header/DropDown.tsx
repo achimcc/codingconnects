@@ -1,5 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
+import { darken } from 'polished';
+import { colors } from '../../styles/colors';
 
 export interface MenuItem {
   title: string;
@@ -13,7 +15,7 @@ export interface DropDownProps {
 export const DropDown: React.FC<DropDownProps> = ({ menuItems }) => (
   <ul css={CategoryStyles}>
     <li css={CategoryDropdownStyles} key="Categories">
-      <a css={CategoryLink} href={`/categories/`} aria-haspopup={menuItems?.length > 0}>
+      <a css={CategoryLink} aria-haspopup={menuItems?.length > 0}>
         Categories
       </a>
       {menuItems && menuItems.length > 0 ? (
@@ -66,9 +68,10 @@ const CategoryListStyles = css`
   z-index: 500;
   list-style: none;
   visibility: hidden;
+  background: ${darken('0.05', colors.darkgrey)};
   opacity: 0;
   display: none;
-  min-width: 8rem;
+  min-width: 14rem;
   position: absolute;
   transition: all 0.5s ease;
   margin-top: 0;
