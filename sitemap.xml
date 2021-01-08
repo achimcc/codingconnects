@@ -2,11 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url> <loc>https://codingconnects.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/creating-a-react-library</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://codingconnects.com/testing-a-react-library-with-jest-and-enzyme</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/testing-a-react-library</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/redux-with-typescript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/improving-redux-store-architecture</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/typization-of-redux-actions</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/debugging-the-gender-gap</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/react/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/type-script/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/library/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/jest/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/enzyme/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/tdd/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/redux/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/discriminant-union-types/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/cathegory-theory/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/movie/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/gender/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/tags/coding/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/tags/tech/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/categories/coding/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://codingconnects.com/categories/digital-life/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/author/ghost/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/author/achim/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://codingconnects.com/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
