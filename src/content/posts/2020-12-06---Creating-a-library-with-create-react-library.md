@@ -7,7 +7,9 @@ draft: false
 permalink: 'creating-a-react-library'
 category: 'Coding'
 tags:
-  - 'Coding'
+  - 'React'
+  - 'TypeScript'
+  - 'Library'
 excerpt: 'I show how to set up a react library which I publish to Github, so I can import it into a React project as a dependency. There is a powerful tool which allows to do a boilerplate approach to build a library: create-react-library.'
 image: 'img/library.jpg'
 ---
@@ -30,7 +32,7 @@ create-react-library
 
 First, we choose a name for the package. Since I prefer to focus on the technical details of setting up a library together with a testing framework, I decide to develop a simple Clock component, whose only purpose is to receive hours and minutes as props and to render the time out of it.
 
-Therefore, I enter 'achimcc-clock' as package name, and 'A simple React clock' as package description. Next, I enter my GitHub user name (achimcc) and the path to my Github repository (achimcc/achimcc-clock). For the license, I just hit return to publish my module under the MIT license. I select yarn as package manager and typescript as a template, since I develop a TypeScript app:
+Therefore, I enter 'achimcc-clock' as package name, and 'A simple React clock' for the package description. Next, I enter my GitHub user name (achimcc) and the path to my Github repository (achimcc/achimcc-clock). For the license, I just hit return to publish my module under the MIT license. I select yarn as the package manager and typescript as a template, since I develop a TypeScript app:
 ![create-react-library-setup.png](img/create-react-library-setup.png)
 That's it, we've created a React TypeScript library. Next we start the development server of the library with:
 
@@ -87,7 +89,7 @@ const Clock = ({ hours, minutes }: Props) => {
 export default Clock
 ```
 
-I used inline styling here for the CSS definitions. An alternative would be to use CSS modules. But then, we would need to import the css definitions in our project, together with our library components. For larger projects, the best solution would might be, to use [styled-components](https://styled-components.com/).
+I used inline styling here for the CSS definitions. An alternative would be to use CSS modules. But then, we would need to import the css definitions in our project, together with our library components. For larger projects, the best solution is using [styled-components](https://styled-components.com/).
 
 We add to lines to index.tsx, since we want to export our new clock component:
 

@@ -1,6 +1,6 @@
 - id: Coding
-  description: My posts around Coding. For now, in TypeScript/React/Redux, with a focus on Frontend architectures and Functional Programming.
+  description: My posts around coding. For now, in TypeScript/React/Redux, with a focus on frontend architectures and functional programming.
   image: img/coding.jpg
 - id: Digital Life
-  description: Everything else.
+  description: My thoughts, observations and discoveries around digital transformation and society.
   image: img/digital_life.jpg

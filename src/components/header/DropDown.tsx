@@ -55,12 +55,14 @@ const CategoryDropdownStyles = css`
     visibility: visible;
     opacity: 1;
     display: block;
+    padding-left: 0px;
   }
 `;
 
 const CategoryLink = css`
   z-index: 500;
   color: white;
+  padding-left: 0;
   text-decoration: none;
 `;
 
@@ -80,6 +82,7 @@ const CategoryListStyles = css`
     visibility: visible;
     opacity: 1;
     display: block;
+    padding-left: 0px;
   }
 `;
 

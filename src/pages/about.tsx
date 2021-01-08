@@ -63,10 +63,10 @@ const About: React.FC = () => (
             <PostFullContent className="post-full-content">
               <div className="post-content">
                 <p>
-                  I’m Achim Schneider, a Software Developer from Berlin. I’m passionate about
-                  technical ideas and innovation. My current interest ranges from Blockchain, over
-                  IOT to AI/Machine Learning Applications. I’m interested in how technology
-                  interacts with society and how it affects society towards the future.
+                  I’m Achim Schneider, a Software Developer and tech enthusiast from Berlin. I’m
+                  interested in how technology interacts with society. And how it affects society
+                  towards the future. I try to improve on Blockchain, IOT and AI/Machine Learning
+                  Applications of tech.
                 </p>
                 <p>
                   <figure>
@@ -75,21 +75,36 @@ const About: React.FC = () => (
                   </figure>
                 </p>
                 <p>
-                  I enjoy finding and drawing connections between unrelated fields, which was one
-                  motivation to choose the name Coding Connects for my current blog. It is still in
-                  a very early stage in which I try to work out my path towards what I believe is a
-                  good architecture for JavaScript/TypeScript Applications, following concepts of
-                  functional and reactive programming. For the future I plan to discuss here
-                  connections and applications to my other interests, and political and
-                  environmental topics. Hence, I will sort my posts in fundamental categories, where
-                  coding relates to the technical posts.
+                  I created this Blog because I enjoy coding and I’m always keen about learning new
+                  things. I programmed it in TypeScript with Gatsby. A begun with a{' '}
+                  <a href="https://github.com/scttcper/gatsby-casper">Gatsby Starter</a>
+                  &nbsp; and I am gradually transforming it into something which fits my custom
+                  needs and ideas.
+                </p>
+                <p>
+                  I named it Coding Connects which relates to my talent of finding connections
+                  between different technologies. And applications of tech to fields that other
+                  persons haven’t seen before me. It is in a very early stage in which I try to work
+                  out my path towards what I believe is a good architecture for
+                  JavaScript/TypeScript Applications. I use concepts of functional and reactive
+                  programming to do this.
+                </p>
+                <p>
+                  For the future, I plan to discuss connections and applications to my other
+                  interests. I might also pick up on political and environmental topics here. Hence,
+                  I will sort my posts in fundamental categories, where coding relates to the
+                  technical posts.
                 </p>
                 <p>
                   I’m working as a JavaScript/TypeScript Fullstack Developer with a focus on
-                  Frontend development. I’ve worked as a Low-Code Developer, which involved working
-                  for many rapid prototyping and POC use cases. I hold a diploma in mathematical
-                  physics in Algebraic Quantum Field Theory, and I got a PhD in Mathematics while
-                  doing research on pseudodifferential equations on singular spaces.
+                  Frontend development. Before this, I worked as an OutSystems Low-Code Developer.
+                  Here I contributed to many rapid prototyping and POC use cases. And I’ve one year
+                  of experience working as a IT Consultant.
+                </p>
+                <p>
+                  I hold a diploma in mathematical physics in Algebraic Quantum Field Theory, and I
+                  got a PhD in Mathematics while doing research on pseudo-differential equations on
+                  singular spaces.
                 </p>
               </div>
             </PostFullContent>

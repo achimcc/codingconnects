@@ -7,7 +7,11 @@ draft: true
 permalink: 'testing-redux-components'
 category: 'Coding'
 tags:
-  - 'Coding'
+  - 'React'
+  - 'TypeScript'
+  - 'TDD'
+  - 'Jest'
+  - 'Enzyme'
 excerpt: 'I pick up the Redux Architecture which I developed in my last two posts and show how to obtain a typization of the Redux hooks. For this, I introduce and explain discriminated union types.'
 image: 'img/typization.jpg'
 ---

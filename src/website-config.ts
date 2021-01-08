@@ -51,7 +51,7 @@ export interface WebsiteConfig {
 
 const config: WebsiteConfig = {
   title: 'Coding Connects',
-  description: 'A Blog about Coding in TypeScript and the life in Berlin',
+  description: 'A Blog about Coding and Digital Transformation',
   coverImage: 'img/blog-cover.png',
   logo: 'img/coding-logo.png',
   lang: 'en',

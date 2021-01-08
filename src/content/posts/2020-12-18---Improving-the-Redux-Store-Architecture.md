@@ -7,7 +7,9 @@ draft: false
 permalink: 'improving-redux-store-architecture'
 category: 'Coding'
 tags:
-  - 'Coding'
+  - 'React'
+  - 'Redux'
+  - 'TypeScript'
 excerpt: 'I continue with the App which I created in my last post. I discuss different techniques that improve the structure of the React/Redux/TypeScript Architecture.'
 image: 'img/structure.jpg'
 ---

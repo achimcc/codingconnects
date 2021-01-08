@@ -7,7 +7,10 @@ draft: false
 permalink: 'testing-a-react-library'
 category: 'Coding'
 tags:
-  - 'Coding'
+  - 'TypeScript'
+  - 'Jest'
+  - 'Enzyme'
+  - 'TDD'
 excerpt: 'Continuing with the library developed in my last post, I show how to configure a testing environment, define test for the clock component and how to run and interpret those tests.'
 image: 'img/testing.jpg'
 ---
@@ -122,11 +125,11 @@ We have three different commands to create/render React components for testing p
 
 - render
 
-Here, mount is the most rigorous one: it does a full DOM mounting of the component and can test interactions with the React DOM Api or the component's lifecycle methods. As it mounts the component into the actual DOM, the component should be unmounted after finishing the test, by calling .unmount().
+Here, `mount` is the most rigorous one: it does a full DOM mounting of the component and can test interactions with the React DOM Api or the component's lifecycle methods. As it mounts the component into the actual DOM, the component should be unmounted after finishing the test, by calling .unmount().
 
-The second one, shallow renders only the single component which we pass as input, omitting even its child components. This is useful for unit testing a component. However, it still has access to the lifecycle methods of the component.
+The second one, `shallow`, renders only the single component which we pass as input, omitting even its child components. This is useful for unit testing a component. However, it still has access to the lifecycle methods of the component.
 
-The last one, render, simply renders to static HTML, ignoring lifecycle methods and child components. The less costly alternative in terms of performance.
+The last one, `render`, simply renders to static HTML, ignoring lifecycle methods and child components. The less costly alternative in terms of performance.
 
 ### Testing with enzyme
 

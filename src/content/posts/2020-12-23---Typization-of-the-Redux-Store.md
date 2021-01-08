@@ -7,7 +7,10 @@ draft: false
 permalink: 'typization-of-redux-actions'
 category: 'Coding'
 tags:
-  - 'Coding'
+  - 'TypeScript'
+  - 'React'
+  - 'Discriminant Union Types'
+  - 'Cathegory Theory'
 excerpt: 'I pick up the Redux Architecture which I developed in my last two posts and show how to obtain a typization of the Redux hooks. For this, I introduce and explain discriminated union types.'
 image: 'img/typization.jpg'
 ---

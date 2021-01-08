@@ -189,14 +189,24 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
             {/* TODO: no-image css tag? */}
             <article css={[PostFull, !post.frontmatter.image && NoImage]}>
               <PostFullHeader className="post-full-header">
-                <PostFullTags className="post-full-tags">
+                <PostFullCategory className="post-full-tags">
                   {post.frontmatter.category && post.frontmatter.category.length > 0 && (
                     <Link to={`/categories/${_.kebabCase(post.frontmatter.category)}/`}>
                       {post.frontmatter.category}
                     </Link>
                   )}
-                </PostFullTags>
+                </PostFullCategory>
                 <PostFullTitle className="post-full-title">{post.frontmatter.title}</PostFullTitle>
+                <PostFullTags>
+                  Tags:&nbsp;
+                  {post.frontmatter.tags &&
+                    post.frontmatter.tags.length > 0 &&
+                    post.frontmatter.tags.map(tag => (
+                      <Link to={`/tags/${_.kebabCase(tag)}/`}>
+                        <Tag>{`${tag}`}&nbsp;</Tag>
+                      </Link>
+                    ))}
+                </PostFullTags>
                 <PostFullCustomExcerpt className="post-full-custom-excerpt">
                   {post.frontmatter.excerpt}
                 </PostFullCustomExcerpt>
@@ -307,12 +317,36 @@ export const PostFullHeader = styled.header`
   }
 `;
 
+const PostFullCategory = styled.section`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* color: var(--midgrey); */
+  color: ${colors.midgrey};
+  font-size: 1.5rem;
+  line-height: 1.4em;
+  font-weight: 600;
+  text-transform: uppercase;
+`;
+
 const PostFullTags = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: center;
   /* color: var(--midgrey); */
   color: ${colors.midgrey};
+  font-size: 1.3rem;
+  line-height: 1.4em;
+  font-weight: 600;
+  text-transform: uppercase;
+`;
+
+const Tag = styled.section`
+  border: 1px solid ${colors.midgrey};
+  color: #5b65b7;
+  margin: 0 2px;
+  padding: 0px 1px 0px 2px;
+  border-radius: 10%;
   font-size: 1.3rem;
   line-height: 1.4em;
   font-weight: 600;

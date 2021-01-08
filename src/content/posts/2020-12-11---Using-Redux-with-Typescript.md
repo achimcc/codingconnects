@@ -7,7 +7,9 @@ draft: false
 permalink: 'redux-with-typescript'
 category: 'Coding'
 tags:
-  - 'Coding'
+  - 'React'
+  - 'Redux'
+  - 'TypeScript'
 excerpt: 'I show how to set up Redux together with TypeScript. Redux is a common library that is used with React for global state management. 
 I explain how to configure the basic Redux configuration.'
 image: 'img/warehouse.jpg'
