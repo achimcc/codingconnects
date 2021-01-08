@@ -11,7 +11,7 @@ tags:
   - 'Gender'
   - 'Coding'
   - 'Tech'
-excerpt: 'I discovered an interesting movie about gender inequality in the tech-industry which present and recommend here.'
+excerpt: 'I discovered an interesting movie about gender inequality in the tech-industry which I present and recommend here.'
 image: 'img/code-movie-cover.jpg'
 ---
 
