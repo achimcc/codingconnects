@@ -196,7 +196,7 @@ const SiteNavContent = styled.div`
 `;
 
 const NavStyles = css`
-  position: relative;
+  position: fixed;
   z-index: 100;
   display: flex;
   margin: 0 0 0 -12px;
