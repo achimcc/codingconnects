@@ -339,13 +339,14 @@ const PostFullTags = styled.section`
   line-height: 1.4em;
   font-weight: 600;
   text-transform: uppercase;
+  flex-wrap: wrap;
 `;
 
 const Tag = styled.section`
   border: 1px solid ${colors.midgrey};
   color: #5b65b7;
   margin: 0 2px;
-  padding: 0px 1px 0px 2px;
+  padding: 0px 0px 0px 3px;
   border-radius: 10%;
   font-size: 1.3rem;
   line-height: 1.4em;
