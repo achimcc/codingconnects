@@ -57,7 +57,6 @@ export interface IndexProps {
 
 const IndexPage: React.FC<IndexProps> = props => {
   const { width, height } = props.data.preview.childImageSharp.fixed;
-
   return (
     <IndexLayout css={HomePosts}>
       <Helmet>
@@ -163,7 +162,7 @@ export const pageQuery = graphql`
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
-        fixed {
+        fixed(width: 1200) {
           ...GatsbyImageSharpFixed
         }
       }
