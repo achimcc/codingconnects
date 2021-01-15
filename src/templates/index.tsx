@@ -37,6 +37,11 @@ export interface IndexProps {
         fixed: FixedObject;
       };
     };
+    preview: {
+      childImageSharp: {
+        fixed: FixedObject;
+      };
+    };
     header: {
       childImageSharp: {
         fixed: FixedObject;
@@ -66,7 +71,7 @@ const IndexPage: React.FC<IndexProps> = props => {
         <meta property="og:url" content={config.siteUrl} />
         <meta
           property="og:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
+          content={`${config.siteUrl}${props.data.preview.childImageSharp.fixed.src}`}
         />
         {config.facebook && <meta property="article:publisher" content={config.facebook} />}
         {config.googleSiteVerification && (
@@ -146,6 +151,15 @@ const IndexPage: React.FC<IndexProps> = props => {
 export const pageQuery = graphql`
   query blogPageQuery($skip: Int!, $limit: Int!) {
     logo: file(relativePath: { eq: "img/coding-logo.png" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fixed {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    preview: file(relativePath: { eq: "img/preview.png" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
