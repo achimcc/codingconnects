@@ -56,7 +56,7 @@ export interface IndexProps {
 }
 
 const IndexPage: React.FC<IndexProps> = props => {
-  const { width, height } = props.data.header.childImageSharp.fixed;
+  const { width, height } = props.data.preview.childImageSharp.fixed;
 
   return (
     <IndexLayout css={HomePosts}>
