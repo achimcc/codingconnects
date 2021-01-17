@@ -2,7 +2,7 @@
 layout: 'post'
 title: Improving the Redux Store Architecture
 author: [Achim]
-date: '2020-12-18T08:00:00.169Z'
+date: 2020-12-18T08:00:00.169Z
 draft: false
 permalink: 'improving-redux-store-architecture'
 category: 'Coding'

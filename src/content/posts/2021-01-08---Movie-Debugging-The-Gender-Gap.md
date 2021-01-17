@@ -2,7 +2,7 @@
 layout: 'post'
 title: Debugging the Gender Gap
 author: [Achim]
-date: '2021-01-08T08:00:00.169Z'
+date: 2021-01-08T08:00:00.169Z
 draft: false
 permalink: 'debugging-the-gender-gap'
 category: 'Digital Life'

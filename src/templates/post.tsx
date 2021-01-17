@@ -202,9 +202,9 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
                   {post.frontmatter.tags &&
                     post.frontmatter.tags.length > 0 &&
                     post.frontmatter.tags.map(tag => (
-                      <Link to={`/tags/${_.kebabCase(tag)}/`}>
-                        <Tag>{`${tag}`}&nbsp;</Tag>
-                      </Link>
+                      <Tag>
+                        <Link to={`/tags/${_.kebabCase(tag)}/`}>{`${tag}`}&nbsp;</Link>
+                      </Tag>
                     ))}
                 </PostFullTags>
                 <PostFullCustomExcerpt className="post-full-custom-excerpt">
@@ -347,11 +347,20 @@ const Tag = styled.section`
   color: #5b65b7;
   margin: 0 2px;
   padding: 0px 0px 0px 3px;
-  border-radius: 10%;
+  border-radius: 10%/30%;
   font-size: 1.3rem;
   line-height: 1.4em;
   font-weight: 600;
   text-transform: uppercase;
+  > a {
+    color: ${colors.logo};
+  }
+  &:hover {
+    border-color: ${colors.blue};
+  }
+  &:hover > a {
+    text-decoration: initial;
+  }
 `;
 
 const PostFullCustomExcerpt = styled.p`

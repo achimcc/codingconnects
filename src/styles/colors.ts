@@ -12,4 +12,5 @@ export const colors = {
   brown: '#a3821a',
   // darkmode: color(var(--darkgrey) l(+2%)),
   darkmode: '#191b1f',
+  logo: '#5b65b7',
 };

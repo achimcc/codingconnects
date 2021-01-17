@@ -2,7 +2,7 @@
 layout: post
 title: Creating a React Library with TypeScript
 author: [Achim]
-date: '2020-12-06T09:40:32.169Z'
+date: 2020-12-06T09:40:32.169Z
 draft: false
 permalink: 'creating-a-react-library'
 category: 'Coding'
