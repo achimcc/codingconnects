@@ -9,6 +9,7 @@ category: Coding
 tags:
   - TypeScript
   - RxJs
+  - Reactive Programming
   - React
 excerpt: About asynchronous event handling with JavaScript and TypeScript. I'm showcasing the potential of rxjs with a very first and simple example which implements drag and drop.
 image: img/marbles.jpg
