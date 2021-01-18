@@ -65,7 +65,7 @@ I want to have ten items and two zones, so we can drag and drop the items from o
 Or follow the external [link](https://vigorous-goldwasser-b66350.netlify.app/).
 This is the code for my App, except for the Item component, in which the RxJs magic is happening:
 
-```typescript{numberLines:0}
+```typescript
 // App.tsx:
 import React, { useEffect, useState } from 'react';
 import './App.css';
@@ -98,8 +98,7 @@ function App() {
     enableMapSet();
   }, []);
   const [zones, setZones] = useState({
-    zone1: new Set<number>([...new Array<number>(10)]
-                                   .map((el, ind) => ind)),
+    zone1: new Set<number>([...new Array<number>(10)].map((el, ind) => ind)),
     zone2: new Set<number>(),
   });
 
@@ -121,12 +120,7 @@ function App() {
           <DropZone key={`${zone}`} id={`${zone}`}>
             <div>{zone}</div>
             {[...zones[zone as dropZone]].map((id: number) => (
-              <Item
-                item={items[id]}
-                id={id}
-                moveToZone={moveToZone}
-                key={id}
-              />
+              <Item item={items[id]} id={id} moveToZone={moveToZone} key={id} />
             ))}
           </DropZone>
         ))}
@@ -138,15 +132,16 @@ function App() {
 export default App;
 ```
 
-I create two div’s, the `DropZone`’s, 5 items which I separate by their Id’s and in line 36 I define a function which allows me to send the `Item`’s to one of the `DropZone`’s.
+I create two div’s, the `DropZone`’s, 5 items which I separate by their Id’s and I define a function which allows me to send the `Item`’s to one of the `DropZone`’s.
 
 The interesting part of the App is the code of the `Item` component:
 
-```typescript{numberLines:0}
-import { useEffect, useRef, useState } from "react";
-import { map, switchMap, take, takeUntil } from "rxjs/operators";
-import { fromEvent, merge } from "rxjs";
-import styled from "styled-components";
+```typescript
+// Item.tsx
+import { useEffect, useRef, useState } from 'react';
+import { map, switchMap, take, takeUntil } from 'rxjs/operators';
+import { fromEvent, merge } from 'rxjs';
+import styled from 'styled-components';
 
 interface Props {
   id: number;
@@ -165,8 +160,8 @@ const ItemDiv = styled.div<{ isDragging: Boolean; pos: Pos }>`
   margin: 5px;
   padding: 10px;
   box-sizing: border-box;
-  background: ${(props) => (props.isDragging ? "yellow" : "white")};
-  transform: translate(${(props) => `${props.pos.x}px, ${props.pos.y}`}px);
+  background: ${props => (props.isDragging ? 'yellow' : 'white')};
+  transform: translate(${props => `${props.pos.x}px, ${props.pos.y}`}px);
 `;
 
 const Item = ({ item, id, moveToZone }: Props) => {
@@ -174,53 +169,48 @@ const Item = ({ item, id, moveToZone }: Props) => {
   const [pos, setPos] = useState<Pos>({ x: 0, y: 0 });
   const itemRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const mousedown$ = fromEvent<MouseEvent>(
-      itemRef.current as HTMLDivElement,
-      "mousedown"
-    );
-    const mousemove$ = fromEvent<MouseEvent>(document, "mousemove");
-    const mouseup$ = fromEvent<MouseEvent>(document, "mouseup");
+    const mousedown$ = fromEvent<MouseEvent>(itemRef.current as HTMLDivElement, 'mousedown');
+    const mousemove$ = fromEvent<MouseEvent>(document, 'mousemove');
+    const mouseup$ = fromEvent<MouseEvent>(document, 'mouseup');
     const drag$ = mousedown$.pipe(
-      switchMap((start) => {
+      switchMap(start => {
         return merge(
           mousemove$.pipe(
-            map((move) => {
+            map(move => {
               move.preventDefault();
               return {
-                type: "move",
+                type: 'move',
                 x: move.x - start.x,
                 y: move.y - start.y,
               };
             }),
-            takeUntil(mouseup$)
+            takeUntil(mouseup$),
           ),
           mouseup$.pipe(
-            map((endPos) => {
+            map(endPos => {
               return {
-                type: "end",
+                type: 'end',
                 x: endPos.clientX,
                 y: endPos.clientY,
               };
             }),
-            take(1)
-          )
+            take(1),
+          ),
         );
-      })
+      }),
     );
 
-    const subscription = drag$.subscribe((evt) => {
+    const subscription = drag$.subscribe(evt => {
       switch (evt.type) {
-        case "move":
+        case 'move':
           setIsDragging(true);
-          setPos((pos) => ({ x: evt.x, y: evt.y }));
+          setPos(pos => ({ x: evt.x, y: evt.y }));
           break;
-        case "end":
+        case 'end':
           setIsDragging(false);
-          const path = document
-            .elementsFromPoint(evt.x, evt.y)
-            .map((el) => el && el.id);
-          const zones = ["zone1", "zone2"];
-          const zoneToDrop = zones.find((zone) => path.includes(zone));
+          const path = document.elementsFromPoint(evt.x, evt.y).map(el => el && el.id);
+          const zones = ['zone1', 'zone2'];
+          const zoneToDrop = zones.find(zone => path.includes(zone));
           if (zoneToDrop) {
             moveToZone(id, zoneToDrop);
           }
@@ -240,7 +230,7 @@ const Item = ({ item, id, moveToZone }: Props) => {
 export default Item;
 ```
 
-I use RxJs here within the `useEffect` hook. I declare in line 37-42 three observables: `mousedown$`, `mousemove$` and `mouseup$`. Once I’ve declared an observable, I subscribe to it and tell the app how it should react to events which the observables are submitting.
+I use RxJs here within the `useEffect` hook. I declare three observables: `mousedown$`, `mousemove$` and `mouseup$`. Once I’ve declared an observable, I subscribe to it and tell the app how it should react to events which the observables are submitting.
 
 #### Marbles
 
@@ -256,7 +246,7 @@ observable$.pipe(Op1, Op2);
 
 #### Construction of the drag$ Operator
 
-Let’s look at the `drag$` Observable in line 37 and how I create it out of other Observables and Operators:
+Let’s look at the `drag$` Observable and how I create it out of other Observables and Operators:
 I construct `drag$` out of three observables: `mousedown$`, `mousemove$` and `mouseup$`. Let me explain the construction of the `drag$` Observable from the inner Observables to the outer ones:
 
 I send `mousemove$` into a pipe, where each `mousemove$` event is mapped to an object which will be emitted by the resulting Observable. Then, the Observable is asked to terminate it’s stream when the ‘mouseup$‘ event occurs, which is done by applying the `takeUntil` Operator:
