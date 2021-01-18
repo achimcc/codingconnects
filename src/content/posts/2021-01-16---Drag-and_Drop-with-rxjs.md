@@ -139,7 +139,7 @@ The interesting part of the App is the code of the `Item` component:
 ```typescript
 // Item.tsx
 import { useEffect, useRef, useState } from 'react';
-import { map, switchMap, take, takeUntil } from 'rxjs/operators';
+import { map, switchMap, take, takeUntil, share } from 'rxjs/operators';
 import { fromEvent, merge } from 'rxjs';
 import styled from 'styled-components';
 
@@ -155,12 +155,15 @@ type Pos = {
 };
 
 const ItemDiv = styled.div<{ isDragging: Boolean; pos: Pos }>`
-  border: 1px solid black;
+  border: 2px solid #3eb0ef;
   border-radius: 10px/50%;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: bold;
   margin: 5px;
   padding: 10px;
+  touch-action: none;
   box-sizing: border-box;
-  background: ${props => (props.isDragging ? 'yellow' : 'white')};
+  background: ${props => (props.isDragging ? '#3eb0ef' : 'transparent')};
   transform: translate(${props => `${props.pos.x}px, ${props.pos.y}`}px);
 `;
 
@@ -169,13 +172,13 @@ const Item = ({ item, id, moveToZone }: Props) => {
   const [pos, setPos] = useState<Pos>({ x: 0, y: 0 });
   const itemRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const mousedown$ = fromEvent<MouseEvent>(itemRef.current as HTMLDivElement, 'mousedown');
-    const mousemove$ = fromEvent<MouseEvent>(document, 'mousemove');
-    const mouseup$ = fromEvent<MouseEvent>(document, 'mouseup');
-    const drag$ = mousedown$.pipe(
+    const pointerdown$ = fromEvent<PointerEvent>(itemRef.current as HTMLDivElement, 'pointerdown');
+    const pointermove$ = fromEvent<PointerEvent>(document, 'pointermove');
+    const pointerup$ = fromEvent<PointerEvent>(document, 'pointerup').pipe(share());
+    const drag$ = pointerdown$.pipe(
       switchMap(start => {
         return merge(
-          mousemove$.pipe(
+          pointermove$.pipe(
             map(move => {
               move.preventDefault();
               return {
@@ -184,9 +187,9 @@ const Item = ({ item, id, moveToZone }: Props) => {
                 y: move.y - start.y,
               };
             }),
-            takeUntil(mouseup$),
+            takeUntil(pointerup$),
           ),
-          mouseup$.pipe(
+          pointerup$.pipe(
             map(endPos => {
               return {
                 type: 'end',
@@ -209,7 +212,7 @@ const Item = ({ item, id, moveToZone }: Props) => {
         case 'end':
           setIsDragging(false);
           const path = document.elementsFromPoint(evt.x, evt.y).map(el => el && el.id);
-          const zones = ['zone1', 'zone2'];
+          const zones = ['Zone1', 'Zone2'];
           const zoneToDrop = zones.find(zone => path.includes(zone));
           if (zoneToDrop) {
             moveToZone(id, zoneToDrop);
@@ -230,13 +233,13 @@ const Item = ({ item, id, moveToZone }: Props) => {
 export default Item;
 ```
 
-I use RxJs here within the `useEffect` hook. I declare three observables: `mousedown$`, `mousemove$` and `mouseup$`. Once I’ve declared an observable, I subscribe to it and tell the app how it should react to events which the observables are submitting.
+I use RxJs here within the `useEffect` hook. I declare three observables: `pointerdown$`, `pointermove$` and `pointerup$`. Once I’ve declared an observable, I subscribe to it and tell the app how it should react to events which the observables are submitting.
 
 #### Marbles
 
 Observables are emitting a stream of events. We visualize this stream on a time axis, on which we place marbles. Then every single marble is representing an event. Now, with Operators, we can transform and manipulate those streams of events.
 
-Talking of Operators, it is important to know that we have two distinct types of operators: Creation Operators and Pipeable Operators. Creation Operators are creating Observables out of a data source. I already used them when I defined `mousedown$`, `mousemove$` and `mouseup$`. In this case, I create Observables out of the mouse interactions on Dom Elements. Pipeable Operators are Operators which receive one Observable and return a new Observable. Starting with an observable, let’s say `observable$` and two Pipeable Operators, `Op1` and `Op2`, we can apply both of them to `observable$`, by writing: `Op1(Op2(observable$))`.
+Talking of Operators, it is important to know that we have two distinct types of operators: Creation Operators and Pipeable Operators. Creation Operators are creating Observables out of a data source. I already used them when I defined `pointerdown$`, `pointermove$` and `pointerup$`. In this case, I create Observables out of the mouse interactions on Dom Elements. Pipeable Operators are Operators which receive one Observable and return a new Observable. Starting with an observable, let’s say `observable$` and two Pipeable Operators, `Op1` and `Op2`, we can apply both of them to `observable$`, by writing: `Op1(Op2(observable$))`.
 
 Since this is getting unreadable quickly, the RxJs way to write this is:
 
@@ -247,21 +250,21 @@ observable$.pipe(Op1, Op2);
 #### Construction of the drag$ Operator
 
 Let’s look at the `drag$` Observable and how I create it out of other Observables and Operators:
-I construct `drag$` out of three observables: `mousedown$`, `mousemove$` and `mouseup$`. Let me explain the construction of the `drag$` Observable from the inner Observables to the outer ones:
+I construct `drag$` out of three observables: `pointerdown$`, `pointermove$` and `pointerup$`. Let me explain the construction of the `drag$` Observable from the inner Observables to the outer ones:
 
-I send `mousemove$` into a pipe, where each `mousemove$` event is mapped to an object which will be emitted by the resulting Observable. Then, the Observable is asked to terminate it’s stream when the ‘mouseup$‘ event occurs, which is done by applying the `takeUntil` Operator:
+I send `pointermove$` into a pipe, where each `pointermove$` event is mapped to an object which will be emitted by the resulting Observable. Then, the Observable is asked to terminate it’s stream when the ‘pointerup$‘ event occurs, which is done by applying the `takeUntil` Operator:
 
 ![marbles_take_until.png](img/marbles_take_until.png)
 _Visual representation of the takeUntil operator, which merges the stream of two events into a new stream_
 
-- `mouseup$` works similar to `mousemove$`, just that it returns an object with a different type value, ‘end‘, and with the operator `take(1)` which ends the stream after the first Submission. When want to drag-and-drop objects, and the drag-and-drop ends with the first `mouseup$` event.
+- `pointerup$` works similar to `pointermove$`, just that it returns an object with a different type value, ‘end‘, and with the operator `take(1)` which ends the stream after the first Submission. When want to drag-and-drop objects, and the drag-and-drop ends with the first `pointerup$` event.
 
 * `merge` The `merge` operator unites my two Observables into one:
 
 ![marbles_merge.png](img/marbles_merge.png)
 _Visual representation of the merge operator, which merges the stream of two events into a new stream_
 
-- `switchMap` receives the `mousdown$` subscription: in therms of causality, this is the first event which is happening in the chain: Switchmap takes the newest `mousedown$` event on the Item and returns the Stream of Observables which results from the `merge` Operator and which depends on the initial event (in this case on the coordinates of the initial `mousedown$` event). Whenever the subscribed observable, `mousedown$`, is emitting a new event, the current stream of events gets thrown away and is being replaced by a new one:
+- `switchMap` receives the `mousdown$` subscription: in therms of causality, this is the first event which is happening in the chain: Switchmap takes the newest `pointerdown$` event on the Item and returns the Stream of Observables which results from the `merge` Operator and which depends on the initial event (in this case on the coordinates of the initial `pointerdown$` event). Whenever the subscribed observable, `pointerdown$`, is emitting a new event, the current stream of events gets thrown away and is being replaced by a new one:
 
 ![marbles_switch_map.png](img/marbles_switch_map.png)
 _Visual representation of the switchMap Operator._
