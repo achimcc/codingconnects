@@ -99,7 +99,7 @@ const About: React.FC = () => (
                   I’m working as a JavaScript/TypeScript Fullstack Developer with a focus on
                   Frontend development. Before this, I worked as an OutSystems Low-Code Developer.
                   Here I contributed to many rapid prototyping and POC use cases. And I’ve one year
-                  of experience working as a IT Consultant.
+                  of experience working as an IT Consultant.
                 </p>
                 <p>
                   I hold a diploma in mathematical physics in Algebraic Quantum Field Theory, and I
