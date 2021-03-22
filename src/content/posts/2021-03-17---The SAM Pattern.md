@@ -15,6 +15,8 @@ excerpt: About asynchronous event handling with JavaScript and TypeScript. I'm s
 image: img/marbles.jpg
 ---
 
+# The SAM Pattern
+
 I discuss here an architecture model which is an alternative to more common models like Redux or MVC. It is the [SAM Pattern](http://sam.js.org/), which goes back to [Jean-Jacques Dubray](https://github.com/jdubray) and his blog post [Why I No Longer Use MVC Frameworks](https://www.infoq.com/articles/no-more-mvc-frameworks/). It is also presented and explained in the last chapter of the book [Front-End Reactive Architectures](https://www.springer.com/de/book/9781484231791).
 
 My interested in this model originates from the search for clean seperation of the business logic from the view. In Redux for example, you can palce some business logic intio the reducer. Indeed, it is recmmended in the redux style guid to place [Put as Much Logic as Possible in Reducers](https://redux.js.org/style-guide/style-guide#put-as-much-logic-as-possible-in-reducers). But in many cases this is not possible, since the reducer is a pure function which receives the old Redux and the action and computes the new store out of it. Hence, calling an API or any other sort of asynchronous processing can not be handled by the reducer. 
@@ -27,8 +29,15 @@ I'm convinced that the frotend components are certainly the wrong place to store
 
 All of my desired features can be implemented follwoing the SAM pattern. And this can even be done by using pure JavaScript or TypeScript, zou don't even need to use React. I still continue to use React with this approach, due to its virtual DOM and also due to its wide distribution with a lot of useful components being available.
 
+# The reactive loop in the SAM pattern
 
-![sam-loop.jpg](img/sam-loop.jpg)
+An app following the SAM pattern archtiecture has a *view* which is computed out of the *model*. The *model* is toring the apps data state. Compared to redux, the data is stored in mutable object which is part of the state. That is probably the most confusing part of the SAM pattern for me, and appears to be a drawback, compared to a Redux architecture.
+
+The way in which the interaction and re-rendering of the App happens is the reactive loop, which is visualized in the following image:
+
+
+![sam-loop.jpg](img/sam-loop.jpg)_The reactive loop in the SAM pattern_
+
 
 
 ```mermaid
