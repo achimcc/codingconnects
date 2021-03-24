@@ -22,11 +22,11 @@ My interested in this model originates from the search for clean seperation of t
 
 I'm convinced that the frotend components are certainly the wrong place to store business logic which is handling asynchronous events and the reducers are not capable of it. Usually a Redux [Middleware](https://redux.js.org/tutorials/fundamentals/part-4-store#middleware) like [Redux Observables](https://redux-observable.js.org/), [Redux Thunks](https://github.com/reduxjs/redux-thunk), [Redux Saga](https://github.com/reduxjs/redux-thunk) or [Redux Logic](https://github.com/jeffbski/redux-logic) is introduced to handle this. But this approach is using a heavy machinery, introduces a high level of complexity and depending on the choice of the middleware it might still lack some of my desired features like:
 
-* Validate an action depending on its payload, the current store and possible side-effects before it reaches the store, and odify it or prevent it from reaching the store.
+* Validate an action depending on its payload, the current store and possible side-effects before it reaches the store, and modify it or prevent it from reaching the store.
 * Process aynchronous events after the action has reached the store, depending on the new store value.
 * Dispatch other action from within the Redux Middleware.
 
-All of my desired features can be implemented follwoing the SAM pattern. And this can even be done by using pure JavaScript or TypeScript, zou don't even need to use React. I still continue to use React with this approach, due to its virtual DOM and also due to its wide distribution with a lot of useful components being available.
+All of my desired features can be implemented follwoing the SAM pattern. And this can even be done by using pure JavaScript or TypeScript, zou don't even need to use React. I still continue to use React with this approach, due to its virtual DOM and also duea to its wide distribution with a lot of useful components being available.
 
 # The reactive loop in the SAM pattern
 
@@ -38,14 +38,18 @@ The way in which the interaction and re-rendering of the App happens is the reac
 2. The *action* is a function which processes this *intent*, during which it is able to perform asynchronous computations. Finally it is presenting a *proposal* to the *present* function, which is part of the *model*.
 3. The *present* function of the model is processing the *proposal* and is either accepting or rejecting it. The *state* is involved in this procedure. While the state in Redux is the place which keeps the data, the *state* in the SAM pattern is an object containing pure functions, which depends on the models data, as well as on the data submitted by the proposal. While the model stores the values of the app and evaluates the actions, the state defines the semantics, under which the actions are processed.
 4. In the case that the model's data has been updated, the *process* function of the model calls the *render* function, which is a part of the *state* object. The render function consists of two distinct function calls:
-  * *stateRepresentation*
-  * *nap*
+    1. *stateRepresentation*
+    2. *nap*
 5. *stateRepresentation* receives the *model*'ss data and computes the next *view*. Then it renders this *view*, by calling the *display* function.
-6. The *nap* function (=next action predicate) uses the *model*'s data and possibly the *state* semantics, to determnie if another action should be performed. If this is the case, it triggers the dispatch of another *action*.
+6. The *nap* function (=next action predicate) uses the *model*'s data and possibly the *state* semantics, to determine if another action should be performed. If this is the case, it triggers the dispatch of another *action*.
+
+
 
 ![sam-loop.jpg](img/sam-loop.jpg)_The reactive loop in the SAM pattern_
 
-Usually a user inter
+# Towers of Hanoi
+
+I picked the [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) as a sample application to implement following the SAM pattern. To improve its usability, I implemented drag and drop. This time, as I want to focus on implementing the SAM pattern, I use an external library for the drag and drop interaction, which is [react-dnd](https://www.npmjs.com/package/react-dnd).
 
 
 
