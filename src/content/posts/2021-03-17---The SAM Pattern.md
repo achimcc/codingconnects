@@ -34,14 +34,14 @@ An app following the SAM pattern archtiecture has a *view* which is computed out
 
 The way in which the interaction and re-rendering of the App happens is the reactive loop. It sumamrizes in the following steps:
 
-1. A user interaction in the UI triggers the dispatch of an action, passing an intent to it.
-2. The action is a function which processes this intent, during which it is able to perform asynchronous computations. Finally it is presenting a proposal to the present function, which is part of the model.
-3. The present function of the model is processing the proposal and is either accepting or rejecting it. The state is involved in this procedure. While the state in Redux is the place which keeps the data, the state in the SAM pattern is am object containing pure functions, which depends on the models data, as well as on the data submitted by the proposal. While the model stores the values of the app and evaluates the actions, the state defines the semantics, under which the actions are processed.
-4. In the case that the model's data has been updated, the process function of the model calls the render function, which is a part of the state object. The render function consists of two distinct function calls:
-  * stateRepresentation
-  * nap
-5. stateRepresentation receives the models data and computes the next view. Then it renders this view by calling the display function.
-6. The nap function (=next action predicate) uses the models data and possibly the state semantics to determnie if another action should be performed. If this is the case, it triggers the dispatch of another action.
+1. A user interaction in the *UI* triggers the dispatch of an *action*, passing an *intent* to it.
+2. The *action* is a function which processes this *intent*, during which it is able to perform asynchronous computations. Finally it is presenting a *proposal* to the *present* function, which is part of the *model*.
+3. The *present* function of the model is processing the *proposal* and is either accepting or rejecting it. The *state* is involved in this procedure. While the state in Redux is the place which keeps the data, the *state* in the SAM pattern is an object containing pure functions, which depends on the models data, as well as on the data submitted by the proposal. While the model stores the values of the app and evaluates the actions, the state defines the semantics, under which the actions are processed.
+4. In the case that the model's data has been updated, the *process* function of the model calls the *render* function, which is a part of the *state* object. The render function consists of two distinct function calls:
+  * *stateRepresentation*
+  * *nap*
+5. *stateRepresentation* receives the *model*'ss data and computes the next *view*. Then it renders this *view*, by calling the *display* function.
+6. The *nap* function (=next action predicate) uses the *model*'s data and possibly the *state* semantics, to determnie if another action should be performed. If this is the case, it triggers the dispatch of another *action*.
 
 ![sam-loop.jpg](img/sam-loop.jpg)_The reactive loop in the SAM pattern_
 
