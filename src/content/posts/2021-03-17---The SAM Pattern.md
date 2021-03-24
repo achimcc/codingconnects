@@ -51,6 +51,7 @@ The way in which the interaction and re-rendering of the App happens is the reac
 
 I picked the [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) as a sample application to implement following the SAM pattern. To improve its usability, I implemented drag and drop. This time, as I want to focus on implementing the SAM pattern, I use an external library for the drag and drop interaction, which is [react-dnd](https://www.npmjs.com/package/react-dnd).
 
+<iframe src='https://blissful-gates-e99ed8.netlify.app/' style={{width: '100%', height: '400px'}} />
 
 
 ```mermaid
