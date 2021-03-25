@@ -78,6 +78,15 @@ The possible interations are:
 3. When solved:
     * Reset the game
 
+Which is reflected by the following intent types:
+
+```typescript
+type IntentType = "TILES" | "START" | "DROP" | "SOLVE" | "RESET" ;
+```
+
+
+
+
 
 
 
