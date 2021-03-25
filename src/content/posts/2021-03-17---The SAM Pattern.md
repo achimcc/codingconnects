@@ -135,6 +135,98 @@ interface Model {
 }
 ```
 
+The present function from the model is processing the actions proposals and updating the models data accordingly:
+
+```typescript
+import state from "./state";
+
+const defaultTowers = (tiles: number) =>
+  ({
+    LEFT: Array.from(Array(tiles).keys()),
+    MIDDLE: [],
+    RIGHT: [],
+  } as TowerData);
+
+const model: Model = {
+  data: { towers: defaultTowers(0), nrTiles: 0, status: "INIT", count: 0 },
+  present: (intent: Intent) => {
+    switch (intent.type) {
+      case "INIT": {
+        model.data.status = "INIT";
+        state.render(model);
+        break;
+      }
+      case "TILES": {
+        if (!state.init(model)) break;
+        model.data.nrTiles = intent.payload.nrTiles;
+        break;
+      }
+      case "START": {
+        if (!state.ready(model)) break;
+        model.data.towers = defaultTowers(model.data.nrTiles);
+        model.data.count = 0;
+        model.data.status = "PLAYING";
+        state.render(model);
+        break;
+      }
+      case "DROP": {
+        const { tower, tileId } = intent.payload;
+        if (!state.canDrop(model, tileId, tower)) break;
+        for (var towerId in model.data.towers)
+          if (model.data.towers[towerId].includes(tileId))
+            model.data.towers[towerId].shift();
+        model.data.towers[tower].unshift(tileId);
+        model.data.count++;
+        state.render(model);
+        break;
+      }
+      case "SOLVE": {
+        if (!state.isSolved(model)) break;
+        model.data.status = "SOLVED";
+        state.render(model);
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  },
+};
+
+export default model;
+```
+
+Here the state defines the semantics of the model, i.e. tells the model's present function, how to interpret the data:
+
+```typescript
+import stateRepresentation from "../View/stateRepresentation";
+import nap from "./nap";
+
+const state: State = {
+  init: (model: Model) => model.data.status === "INIT",
+  ready: (model: Model) =>
+    model.data.status === "INIT" && model.data.nrTiles !== 0,
+  canDrop: (model: Model, tileId: TileId, tower: TowerType) => {
+    return Math.min(...model.data.towers[tower]) > tileId;
+  },
+  isSolved: (model: Model) => {
+    return (
+      model.data.status === "PLAYING" &&
+      model.data.towers["RIGHT"].length === model.data.nrTiles
+    );
+  },
+  render: (model: Model) => {
+    stateRepresentation(model);
+    nap(model);
+  },
+};
+
+export default state;
+```
+
+
+
+
 
 
 
