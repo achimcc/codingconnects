@@ -28,7 +28,7 @@ I'm convinced that the frotend components are certainly the wrong place to store
 
 All of my desired features can be implemented follwoing the SAM pattern. And this can even be done by using pure JavaScript or TypeScript, zou don't even need to use React. I still continue to use React with this approach, due to its virtual DOM and also duea to its wide distribution with a lot of useful components being available.
 
-# The reactive loop in the SAM pattern
+### The reactive loop in the SAM pattern
 
 An app following the SAM pattern archtiecture has a *view* which is computed out of the *model*. The *model* is toring the apps data state. Compared to redux, the data is stored in mutable object which is part of the state. That is probably the most confusing part of the SAM pattern for me, and appears to be a drawback, compared to a Redux architecture.
 
@@ -47,11 +47,39 @@ The way in which the interaction and re-rendering of the App happens is the reac
 
 ![sam-loop.jpg](img/sam-loop.jpg)_The reactive loop in the SAM pattern_
 
-# Towers of Hanoi
+## Towers of Hanoi
 
 I picked the [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) as a sample application to implement following the SAM pattern. To improve its usability, I implemented drag and drop. This time, as I want to focus on implementing the SAM pattern, I use an external library for the drag and drop interaction, which is [react-dnd](https://www.npmjs.com/package/react-dnd).
 
 <iframe src='https://blissful-gates-e99ed8.netlify.app/' style={{width: '100%', height: '400px'}} />
+
+### Implementation following the SAM pattern
+
+If you tried the Hanoi game above, the first thing you might have realized is that the app can be in three fundamentally different states, displaying non related screen:
+
+1. The initial screen.
+2. The screen while playing the game.
+3. The screen which is shown, once the game is solved.
+
+It makes sense to give the app a global state, which allows to assign it to one of those three states: 
+
+```typescript
+type Status = "INIT" | "PLAYING" | "SOLVED";
+```
+
+The possible interations are:
+
+1. On the start screen:
+    * Change the number of tiles
+    * Start the game
+2. While playing:
+    * Move a tile from one tower to another tower
+    * Solve the game
+3. When solved:
+    * Reset the game
+
+
+
 
 
 ```mermaid
