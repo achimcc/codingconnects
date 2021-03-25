@@ -84,42 +84,59 @@ Which is reflected by the following intent types:
 type IntentType = "TILES" | "START" | "DROP" | "SOLVE" | "RESET" ;
 ```
 
+The sourcecode of the SAM-Hanoi app as rendered above can be found [here](https://github.com/achimcc/sam-hanoi). I don't want to explain every detail, but focus on the most crucial parts.
 
-
-
-
-
-
+To clearify on the reactive loop of the SAM pattern inmy app, I visualized it in a flow chart, where the naming conventions are folliwing the naming of the directories and function/parameter names in my code:
 
 ```mermaid
-stateDiagram-v2
-state DOM {
-  UI
-}
-nap --> dispatch
-UI --> dispatch
-state Actions {
-  dispatch --> action
-}
-action --> model
-state Model {
-  model --> 'state
-  'state --> nap
-}
-'state --> stateRepresentation
-state View {
-  stateRepresentation --> view
-  stateRepresentation --> display
-}
-display --> UI
-
+graph TD
+subgraph DOM
+    A[UI] 
+end
+subgraph Actions
+    A -->|triggers| B(dispatch)
+    B -->|intent| C(action)
+end
+subgraph Model
+    C -->|proposal| E[present]
+    E -->|model.data| F[state.render]
+    F --> |triggers| G[nap]
+    G --> B
+end
+subgraph View
+    F --> |model.data| J[stateRepresentation]
+    J --> |model.data| K[view]
+    J --> |triggers| L[display]
+    K --> |JSX components|L
+    L --> |injects JSX| A
+end
 ```
 
-    /*
-    
-    state --> stateRepresentation
-    nap --> dispatch
-    stateRepresentation --> view
-    stateRepresentation --> display
-    display --> UI
-    */
+As mentioned above, the model is carrying the data in a mutable obejct which is updated by the models render function. The typization of `model.data` is the following:
+
+```typescript
+type LessThan<N extends number | bigint> = intrinsic
+
+type TileId = LessThan<10>;
+
+type Presenter = {
+  (data: Data): void;
+};
+
+interface TowerData {
+  LEFT: Array<TileId>;
+  MIDDLE: Array<TileId>;
+  RIGHT: Array<TileId>;
+}
+
+interface Model { 
+  data: {towers: Towers, nrTiles: number, status: Status, count: number};
+  present: Presenter;
+}
+```
+
+
+
+
+
+
