@@ -30,18 +30,18 @@ All of my desired features can be implemented follwoing the SAM pattern. And thi
 
 ### The reactive loop in the SAM pattern
 
-An app following the SAM pattern archtiecture has a *view* which is computed out of the *model*. The *model* is toring the apps data state. Compared to redux, the data is stored in mutable object which is part of the state. That is probably the most confusing part of the SAM pattern for me, and appears to be a drawback, compared to a Redux architecture.
+An app following the SAM pattern archtiecture has a `view` which is computed out of the *model*. The *model* is toring the apps data state. Compared to redux, the data is stored in mutable object which is part of the state. That is probably the most confusing part of the SAM pattern for me, and appears to be a drawback, compared to a Redux architecture.
 
 The way in which the interaction and re-rendering of the App happens is the reactive loop. It sumamrizes in the following steps:
 
-1. A user interaction in the *UI* triggers the dispatch of an *action*, passing an *intent* to it.
-2. The *action* is a function which processes this *intent*, during which it is able to perform asynchronous computations. Finally it is presenting a *proposal* to the *present* function, which is part of the *model*.
-3. The *present* function of the model is processing the *proposal* and is either accepting or rejecting it. The *state* is involved in this procedure. While the state in Redux is the place which keeps the data, the *state* in the SAM pattern is an object containing pure functions, which depends on the models data, as well as on the data submitted by the proposal. While the model stores the values of the app and evaluates the actions, the state defines the semantics, under which the actions are processed.
-4. In the case that the model's data has been updated, the *process* function of the model calls the *render* function, which is a part of the *state* object. The render function consists of two distinct function calls:
-    1. *stateRepresentation*
-    2. *nap*
-5. *stateRepresentation* receives the *model*'ss data and computes the next *view*. Then it renders this *view*, by calling the *display* function.
-6. The *nap* function (=next action predicate) uses the *model*'s data and possibly the *state* semantics, to determine if another action should be performed. If this is the case, it triggers the dispatch of another *action*.
+1. A user interaction in the *UI* triggers the dispatch of an `action`, passing an `intent` to it.
+2. The `action` is a function which processes this `intent`, during which it is able to perform asynchronous computations. Finally it is presenting a `proposal` to the `present` function, which is part of the `model`.
+3. The `present` function of the model is processing the `proposal` and is either accepting or rejecting it. The `state` is involved in this procedure. While the state in Redux is the place which keeps the data, the `state` in the SAM pattern is an object containing pure functions, which depends on the models data, as well as on the data submitted by the proposal. While the model stores the values of the app and evaluates the actions, the state defines the semantics, under which the actions are processed.
+4. In the case that the model's data has been updated, the `process` function of the model calls the `render` function, which is a part of the `state` object. The render function consists of two distinct function calls:
+    1. `stateRepresentation`
+    2. `nap`
+5. `stateRepresentation` receives the `model`'s data and computes the next `view`. Then it renders this `view`, by calling the `display` function.
+6. The `nap` function (=next action predicate) uses the `model`'s data and possibly the `state` semantics, to determine if another action should be performed. If this is the case, it triggers the dispatch of another `action`.
 
 
 
@@ -196,7 +196,7 @@ const model: Model = {
 export default model;
 ```
 
-Here the state defines the semantics of the model, i.e. tells the model's present function, how to interpret the data. For this it uses pure functions which evaluate the model's data:
+Here the `state` defines the semantics of the `model`, i.e. tells the `model'`s present function, how to interpret the data. For this it uses pure functions which evaluate the `model'`s data:
 
 ```typescript
 import stateRepresentation from "../View/stateRepresentation";
@@ -224,7 +224,7 @@ const state: State = {
 export default state;
 ```
 
-Then finally, the steRepresentation is derived in a declarative way from the model's data:
+Then finally, the `stateRepresentation` is derived in a declarative way from the `model`'s data:
 
 ```typescript
 import React from "react";
@@ -250,7 +250,7 @@ const stateRepresentation = (model: Model) => {
 export default stateRepresentation;
 ```
 
-Here the stateRepresentation implements different views, which represent the different screens of the app:
+Here the `stateRepresentation` implements different views, which represent the different screens of the app:
 
 ```typescript
 import React from "react";
@@ -267,7 +267,23 @@ const view = {
 export default view;
 ```
 
-and a display function which is inejecting the derived representation into the DOM.
+and a `display` function which is inejecting the derived representation into the DOM.
+
+Finally, the `nap` function gets executed from the render function after deriving the `stateRepresentation` to evaluate if there is any other action which should be dispatched as a consoquence of the updated `model`'s data. In our case, it checks if the game is solved after each move and to trigger the game into 'SOLVED' mode, as soon as this is the case:
+
+
+```typescript
+import dispatch from "../Actions/dispatch";
+import state from "./state";
+
+const nap = (model: Model) => {
+  if (state.isSolved(model)) {
+    dispatch({ type: "SOLVE" });
+  }
+};
+
+export default nap;
+```
 
 
 
