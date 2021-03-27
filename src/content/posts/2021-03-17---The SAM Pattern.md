@@ -196,7 +196,7 @@ const model: Model = {
 export default model;
 ```
 
-Here the state defines the semantics of the model, i.e. tells the model's present function, how to interpret the data:
+Here the state defines the semantics of the model, i.e. tells the model's present function, how to interpret the data. For this it uses pure functions which evaluate the model's data:
 
 ```typescript
 import stateRepresentation from "../View/stateRepresentation";
@@ -223,6 +223,55 @@ const state: State = {
 
 export default state;
 ```
+
+Then finally, the steRepresentation is derived in a declarative way from the model's data:
+
+```typescript
+import React from "react";
+import view from "./view";
+import display from "./display";
+
+const stateRepresentation = (model: Model) => {
+  let representation = <div> Playing</div>;
+  switch (model.data.status) {
+    case "INIT":
+      representation = view.init();
+      break;
+    case "PLAYING":
+      representation = view.playing(model);
+      break;
+    case "SOLVED":
+      representation = view.solved(model);
+      break;
+  }
+  display(representation);
+};
+
+export default stateRepresentation;
+```
+
+Here the stateRepresentation implements different views, which represent the different screens of the app:
+
+```typescript
+import React from "react";
+import Board from "../../components/Board/Board";
+import Init from "../../components/Init/Init";
+import Solved from "../../components/Solved/Solved";
+
+const view = {
+  playing: (model: Model) => <Board model={model} />,
+  solved: (model: Model) => <Solved model={model} />,
+  init: () => <Init />,
+};
+
+export default view;
+```
+
+and a display function which is inejecting the derived representation into the DOM.
+
+
+
+
 
 
 
