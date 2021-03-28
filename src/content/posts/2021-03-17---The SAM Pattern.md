@@ -4,35 +4,35 @@ title: The SAM pattern
 author: [Achim]
 date: 2021-03-17T08:00:00.169Z
 draft: false
-permalink: samp-pattern
+permalink: sam-pattern
 category: Coding
 tags:
   - TypeScript
   - Architecture
   - Reactive Programming
   - React
-excerpt: About asynchronous event handling with JavaScript and TypeScript. I'm showcasing the potential of rxjs with a very first and simple example which implements drag and drop.
+excerpt: I discuss in this post the SAM Pattern as an alternative approach to widely adopted Frontend architectures.
 image: img/marbles.jpg
 ---
 
 # The SAM Pattern
 
-I discuss here an architecture model that is an alternative to more common models like Redux or MVC. It is the [SAM Pattern](http://sam.js.org/), which goes back to [Jean-Jacques Dubray](https://github.com/jdubray) and his blog post [Why I No Longer Use MVC Frameworks](https://www.infoq.com/articles/no-more-mvc-frameworks/). It is also presented and explained in the last chapter of the book [Front-End Reactive Architectures](https://www.springer.com/de/book/9781484231791).
-My interested in this model originates from the search for clean separation of the business logic from the view. In Redux, for example, you can place some business logic into the reducer. Indeed, the redux style guide recommends to place [Put as Much Logic as Possible in Reducers](https://redux.js.org/style-guide/style-guide#put-as-much-logic-as-possible-in-reducers). But most times this is not possible, since the reducer is a pure function which receives the old Redux and the action and computes the new store out of it. Hence, the reducer can not handle an API or any other sort of asynchronous process. 
+I will present the [SAM Pattern](http://sam.js.org/) in this post, which is a architecture model that represents an alternative to more common models like Redux or MVC. It goes back to [Jean-Jacques Dubray](https://github.com/jdubray) and his blog post [Why I No Longer Use MVC Frameworks](https://www.infoq.com/articles/no-more-mvc-frameworks/). It is also presented and explained in the last chapter of the book [Front-End Reactive Architectures](https://www.springer.com/de/book/9781484231791).
+While I was searching for a frontend architecture which provides a clean separation of the business logic from the view, I stumbled over this pattern. In Redux, you can place some business logic into the reducer. In point of fact, the redux style guide recommends to place [Put as Much Logic as Possible in Reducers](https://redux.js.org/style-guide/style-guide#put-as-much-logic-as-possible-in-reducers). But most times this is not possible, since the reducer is a pure function which receives the old Redux and the action and computes the new store out of it. As a result the reducer can not handle an API or any other sort of asynchronous process. 
 
-I'm convinced that the frontend components are certainly the wrong place to store business logic, which is handling asynchronous events and the reducers are not capable of it. Usually a Redux [Middleware](https://redux.js.org/tutorials/fundamentals/part-4-store#middleware) like [Redux Observables](https://redux-observable.js.org/), [Redux Thunks](https://github.com/reduxjs/redux-thunk), [Redux Saga](https://github.com/reduxjs/redux-thunk) or [Redux Logic](https://github.com/jeffbski/redux-logic) is introduced to handle this. But this approach is using a heavy machinery, introduces a high level of complexity and depending on the choice of the middleware it might still lack some of my desired features like:
+It is my conviction that fronted components are the wrong place to store complex business logic, which is handling asynchronous events. In addition the reducers of a Redux store are not capable of it. Commonly a [Redux Middleware](https://redux.js.org/tutorials/fundamentals/part-4-store#middleware) like [Redux Observables](https://redux-observable.js.org/), [Redux Thunks](https://github.com/reduxjs/redux-thunk), [Redux Saga](https://github.com/reduxjs/redux-thunk) or [Redux Logic](https://github.com/jeffbski/redux-logic) is introduced to handle this. But this approach is using a heavy machinery, introduces a high level of complexity and depending on the choice of the middleware it might still lack some of my desired features like:
 
 * Validate an action depending on its payload, the current store and side-effects before it reaches the store, and change it or prevent it from reaching the store.
 * Process asynchronous events after the actions have reached the store, depending on the new store value.
 * Dispatch other action from within the Redux Middleware.
 
-We can implement all of my desired features following the SAM pattern. And we can accomplish this by using pure JavaScript or TypeScript, you don't even need to use React. I still continue to use React with this approach, because of its virtual DOM and also due to its wide distribution with a lot of useful components being available.
+All of my desired features can be implemented by applying the SAM pattern. And we can accomplish this by using pure JavaScript or TypeScript, we don't even need to use React. I still continue to use React with this approach, because of its virtual DOM and also due to its wide distribution with a lot of useful components being available.
 
 ### The reactive loop in the SAM pattern
 
-An app following the SAM pattern architecture has a `view` which is computed out of the `model`. The `model` is storing the app’s data state. Compared to redux, the data consists of a mutable object which is part of the state. That is probably the most confusing part of the SAM pattern for me, and appears to be a drawback, compared to a Redux architecture.
+Following the SAM pattern architecture, an app has a `view` which is computed out of the `model`. The `model` is storing the app’s data state. Compared to redux, the data consists of a mutable object which is part of the state. That is probably the most confusing part of the SAM pattern for me, and appears to be a drawback, compared to a Redux architecture.
 
-How the interaction and re-rendering of the App happens is the reactive loop. It summarizes in the following steps:
+The cycle of interaction and re-rendering of the App is called the reactive loop. It summarizes in the following steps:
 
 1. A user interaction in the *UI* triggers the dispatch of an `action`, passing an `intent` to it.
 2. The `action` is a function which processes this `intent`, during which it can perform asynchronous computations. Finally, it is presenting a `proposal` to the `present` function, which is part of the `model`.
@@ -49,19 +49,19 @@ How the interaction and re-rendering of the App happens is the reactive loop. It
 
 ## Towers of Hanoi
 
-I picked the [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) as a sample application to implement following the SAM pattern. To improve its usability, I implemented drag and drop. This time, as I want to focus on implementing the SAM pattern, I use an external library for the drag-and-drop interaction, which is [react-dnd](https://www.npmjs.com/package/react-dnd).
+I picked the [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) as a sample application to implement following the SAM pattern. To improve its usability, I implemented drag and drop. Since I want to focus on implementing the SAM pattern, I use an external library for the drag-and-drop interaction, which is [react-dnd](https://www.npmjs.com/package/react-dnd).
 
 <iframe src='https://blissful-gates-e99ed8.netlify.app/' style={{width: '100%', height: '400px'}} />
 
 ### Implementation following the SAM pattern
 
-If you tried the Hanoi game above, the first thing you might have realized is that the app can be in three fundamentally different states, displaying non-related screen:
+When you try the Hanoi game above, you realize is the app can be in three fundamentally different states, displaying non-related screen:
 
 1. The initial screen.
 2. The screen while playing the game.
 3. The screen which is shown once the game is solved.
 
-It makes sense to give the app a global state, which allows to assign it to one of those three states: 
+Hence the app carries a global state, which allows to assign it to one of those three states: 
 
 ```typescript
 type Status = "INIT" | "PLAYING" | "SOLVED";
@@ -78,15 +78,15 @@ The iterations are:
 3. When solved:
     * Reset the game
 
-Which is reflected by the following intent types:
+Reflecting the following intent types:
 
 ```typescript
 type IntentType = "TILES" | "START" | "DROP" | "SOLVE" | "RESET" ;
 ```
 
-You can find the source code of the SAM-Hanoi app [here](https://github.com/achimcc/sam-hanoi). I don't want to explain every detail, but focus on the most crucial parts.
+Check out the [SAM Hanoi Repo](https://github.com/achimcc/sam-hanoi) on my Github account to access the full source code of the app. While I don't want to explain every detail, I still want to remark on the most crucial parts:
 
-To clarify on the reactive loop of the SAM pattern in my app, I visualized it in a flowchart, where the naming conventions are following the naming of the directories and function/parameter names in my code:
+Visualizing the reactive loop of the SAM pattern in a flowchart, I follow the naming conventions of the directories and function/parameter names in my code:
 
 ```mermaid
 graph TD
@@ -112,7 +112,7 @@ subgraph View
 end
 ```
 
-As mentioned above, the model persists the data in a mutable object that is updated by the `model`s render function. The typization of `model.data` is:
+The model persists the data in a mutable object that is updated by the `model`s render function. Specifically, the typization of `model.data` reads as:
 
 ```typescript
 type LessThan<N extends number | bigint> = intrinsic
@@ -135,7 +135,7 @@ interface Model {
 }
 ```
 
-The present function from the model is processing the actions proposals and updating the models data accordingly:
+Here the `present` function from the `model` is processing the actions proposals and updating the models data accordingly:
 
 ```typescript
 import state from "./state";
@@ -196,7 +196,7 @@ const model: Model = {
 export default model;
 ```
 
-Here the `state` defines the semantics of the `model`, it tells the `model'`s present function, how to interpret the data. It is using pure functions which evaluate the `model'`s data:
+Subsequently the `state` defines the semantics of the `model`, it tells the `model'`s present function, how to interpret the data. It is using pure functions which evaluate the `model'`s data:
 
 ```typescript
 import stateRepresentation from "../View/stateRepresentation";
@@ -224,7 +224,7 @@ const state: State = {
 export default state;
 ```
 
-Then finally, the model derives the `stateRepresentation` in a declarative way from its data:
+Eventually, the model derives the `stateRepresentation` in a declarative way from its data:
 
 ```typescript
 import React from "react";
@@ -250,7 +250,7 @@ const stateRepresentation = (model: Model) => {
 export default stateRepresentation;
 ```
 
-Here the `stateRepresentation` implements different views, which represent the different screens of the app:
+In this stept, the `stateRepresentation` implements different views, which represent the different screens of the app:
 
 ```typescript
 import React from "react";
@@ -269,7 +269,7 @@ export default view;
 
 and a `display` function which is injecting the derived representation into the DOM.
 
-The render function finally executes the nap function after deducing the `stateRepresentation` to evaluate if there is any other action to dispatch because of the updated `model`'s data. In our case, it checks if we solved the game after each move and to update the game’s status to 'SOLVED' mode, as soon as this is the case:
+Next to this, the `render` function executes the `nap` function to evaluate if there is any other action to dispatch because of the updated `model`'s data. In our case, it checks if we solved the game after each move and to update the game’s status to 'SOLVED' mode, as soon as this is the case:
 
 
 ```typescript
@@ -284,16 +284,3 @@ const nap = (model: Model) => {
 
 export default nap;
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
