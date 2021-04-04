@@ -1,3 +1,4 @@
+
 ---
 
 layout: post
@@ -36,7 +37,7 @@ image: img/marbles.jpg
 
   
 
-I present the [SAM Pattern](http://sam.js.org/) in this post, which is an architecture model that represents an alternative to more common models like Redux or MVC. It goes back to [Jean-Jacques Dubray](https://github.com/jdubray) and his blog post [Why I No Longer Use MVC Frameworks](https://www.infoq.com/articles/no-more-mvc-frameworks/). It is also presented and explained in the last chapter of the book [Front-End Reactive Architectures](https://www.springer.com/de/book/9781484231791).
+I present the [SAM Pattern](http://sam.js.org/) in this post. It is an architecture model which represents an alternative to more common models like Redux or MVC. It goes back to [Jean-Jacques Dubray](https://github.com/jdubray) and his blog post [Why I No Longer Use MVC Frameworks](https://www.infoq.com/articles/no-more-mvc-frameworks/). It is also presented and explained in the last chapter of the book [Front-End Reactive Architectures](https://www.springer.com/de/book/9781484231791).
 
 While I was searching for a frontend architecture which provides a clean separation of the business logic from the view, I stumbled over this pattern. In Redux, you can place some business logic into the reducer. In point of fact, the redux style guide recommends to [place as Much Logic as Possible in Reducers](https://redux.js.org/style-guide/style-guide#put-as-much-logic-as-possible-in-reducers). But most times this is not possible, since the reducer is a pure function which receives the old Redux and the action and computes the new store out of it. As a result the reducer can not handle an API or any other sort of asynchronous process.
 
@@ -54,7 +55,7 @@ It is my conviction that fronted components are the wrong place to store complex
 
   
 
-All of my desired features can be implemented by applying the SAM pattern. And we can accomplish this by using pure JavaScript or TypeScript, we don't even need to use React. I still continue to use React with this approach, because of its virtual DOM and also due to its wide distribution with a lot of useful components being available.
+All of my desired features can be implemented by applying the SAM pattern. And it can be accomplished using pure JavaScript or TypeScript, we don't even need to use React. However, I continue to use React with this approach, because of its virtual DOM and also due to its wide distribution with a lot of useful components being available.
 
   
 
@@ -62,7 +63,7 @@ All of my desired features can be implemented by applying the SAM pattern. And w
 
   
 
-Following the SAM pattern architecture, an app has a `view` which is computed out of the `model`. The `model` is storing the app’s data state. Compared to redux, the data consists of a mutable object which is part of the state. That is probably the most confusing part of the SAM pattern for me, and appears to be a drawback, compared to a Redux architecture.
+Following the SAM pattern architecture, an app has a `view` which it derives out of the `model`'s data. Compared to redux, the data consists of a mutable object That is probably the most confusing part of the SAM pattern for me, and appears to be a drawback, compared to a Redux architecture, where we are always dealing with immutable objects.
 
   
 
@@ -74,7 +75,7 @@ The cycle of interaction and re-rendering of the App is called the reactive loop
 
 2. The `action` is a function which processes this `intent`, during which it can perform asynchronous computations. Finally, it is presenting a `proposal` to the `present` function, which is part of the `model`.
 
-3. The `present` function of the model is processing the `proposal` and is accepting or rejecting it. It involves the `state` in this procedure. While the state in Redux is the place which keeps the data, the `state` in the SAM pattern is an object containing pure functions, which depends on the models data, and on the data submitted by the proposal. While the model stores the values of the app and evaluates the actions, the state defines the semantics, under which the actions are processed.
+3. The `present` function of the model is processing the `proposal` and is accepting or rejecting it. It involves the `state` in this procedure. While the state in Redux is the place which keeps the data, the `state` in the SAM pattern is an object containing pure functions, which depends on the models data, and the data submitted by the proposal. While the model stores the values of the app and evaluates the actions, the state defines the semantics, under which the `model` processes the actions.
 
 4. After updating the model's data, the `process` function of the model calls the `render` function, which is a part of the `state` object. The render function comprises two distinct function calls:
 
@@ -270,7 +271,7 @@ present: Presenter;
 
   
 
-Here the `present` function from the `model` is processing the actions proposals and updating the models data accordingly:
+Here the `present` function from the `model` is processing the actions proposal's and updating the models data accordingly:
 
   
 
@@ -534,11 +535,11 @@ export  default  view;
 
   
 
-and a `display` function which is injecting the derived representation into the DOM.
+together with a `display` function which is injecting the derived representation into the DOM.
 
   
 
-Next to this, the `render` function executes the `nap` function to evaluate if there is any other action to dispatch because of the updated `model`'s data. In our case, it checks if we solved the game after each move and to update the game’s status to 'SOLVED' mode, as soon as this is the case:
+Next to this, the `render` function executes the `nap` function to check if any other action should be dispatched as a consequence of the updated `model`'s data. In our case, it checks if we solved the game after each move and in this case, it sets the game’s status to 'SOLVED' state:
 
   
   
