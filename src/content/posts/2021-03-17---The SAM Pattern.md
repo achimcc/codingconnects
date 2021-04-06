@@ -571,8 +571,12 @@ export  default  nap;
 
 ```
 
-Tis closes the reactive loop and finishes this exc
+This closes the reactive loop and finishes this sampel implementation of SAM.
+
+## Concluding remarks
+
+It was my intention to fully understand hiw the SAM pattern works under the hood and 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1MDc0MjQxMywxNzcyMzcwMDM4LDE0MD
+eyJoaXN0b3J5IjpbMjEwNDQ2NjcwOSwxNzcyMzcwMDM4LDE0MD
 Q0MDMyNjVdfQ==
 -->
