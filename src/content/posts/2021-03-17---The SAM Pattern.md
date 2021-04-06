@@ -37,9 +37,9 @@ image: img/marbles.jpg
 
   
 
-The [SAM Pattern](http://sam.js.org/) is a architecture model that represents an alternative to models like Redux or MVC. It goes back to [Jean-Jacques Dubray](https://github.com/jdubray) and his blog post [Why I No Longer Use MVC Frameworks](https://www.infoq.com/articles/no-more-mvc-frameworks/). It is also presented and explained in the last chapter of the book [Front-End Reactive Architectures](https://www.springer.com/de/book/9781484231791).
+The [SAM Pattern](http://sam.js.org/) is a architecture model that represents an alternative approach to more common architectures like Redux or MVC. It goes back to [Jean-Jacques Dubray](https://github.com/jdubray) and his blog post [Why I No Longer Use MVC Frameworks](https://www.infoq.com/articles/no-more-mvc-frameworks/). It is also presented and explained in the last chapter of the book [Front-End Reactive Architectures](https://www.springer.com/de/book/9781484231791).
 
-While I was searching for a frontend architecture which provides a clean separation of the business logic from the view, I stumbled over this pattern. In Redux, you can place some business logic into the reducer. In point of fact, the redux style guide recommends to [place as Much Logic as Possible in Reducers](https://redux.js.org/style-guide/style-guide#put-as-much-logic-as-possible-in-reducers). But most times this is not possible, since the reducer is a pure function which receives the old Redux and the action and computes the new store out of it. As a result the reducer can not handle an API or any other sort of asynchronous process.
+While I was searching for a frontend architecture which provides a clean separation of the business logic from the view, I stumbled over this pattern. In Redux, you can place some business logic into the reducer. In point of fact, the redux style guide recommends to [place as much logic as possible in reducers](https://redux.js.org/style-guide/style-guide#put-as-much-logic-as-possible-in-reducers). But very often this is not possible, since the reducer is a pure function which receives the old Redux and the action and computes the new store out of it. As a result the reducer can not handle an API or any other sort of asynchronous process.
 
   
 
@@ -568,5 +568,5 @@ export  default  nap;
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjYzMDUxMTcsMTQwNDQwMzI2NV19
+eyJoaXN0b3J5IjpbLTEzODU2Njc3NTQsMTQwNDQwMzI2NV19
 -->
