@@ -225,7 +225,7 @@ end
 
 ```
 
-  
+  #### The model
 
 The model persists the data in a mutable object that is updated by the `model`s render function. Specifically, the typization of `model.data` reads as:
 
@@ -570,6 +570,6 @@ export  default  nap;
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjAxMzcxNTM5LDE3NzIzNzAwMzgsMTQwND
-QwMzI2NV19
+eyJoaXN0b3J5IjpbLTE3OTI2ODkxMzksMTc3MjM3MDAzOCwxND
+A0NDAzMjY1XX0=
 -->
