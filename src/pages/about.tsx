@@ -76,7 +76,9 @@ const About: React.FC = () => (
                 </p>
                 <p>
                   I created this Blog because I enjoy coding and I’m always keen about learning new
-                  things. I programmed it in TypeScript with Gatsby. A begun with a{' '}
+                  things. And because I'm a fan of an approach called
+                  <a href="https://www.swyx.io/learn-in-public/">Learn in Public</a>. I programmed
+                  it in TypeScript with Gatsby. I begun with a{' '}
                   <a href="https://github.com/scttcper/gatsby-casper">Gatsby Starter</a>
                   &nbsp; and I am gradually transforming it into something which fits my custom
                   needs and ideas.
@@ -96,10 +98,11 @@ const About: React.FC = () => (
                   technical posts.
                 </p>
                 <p>
-                  I’m working as a JavaScript/TypeScript Fullstack Developer with a focus on
-                  Frontend development. Before this, I worked as an OutSystems Low-Code Developer.
-                  Here I contributed to many rapid prototyping and POC use cases. And I’ve one year
-                  of experience working as an IT Consultant.
+                  I’m working as a TypeScript and Blockchain Developer, currently with a focus on
+                  Frontend development for <a href="https://parity.io">Parity</a>. Before this, I
+                  worked as an OutSystems Low-Code Developer. Here I contributed to many rapid
+                  prototyping and POC use cases. And I’ve one year of experience working as an IT
+                  Consultant.
                 </p>
                 <p>
                   I hold a diploma in mathematical physics in Algebraic Quantum Field Theory, and I
