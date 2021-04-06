@@ -7,7 +7,7 @@ title: The SAM pattern
 
 author: [Achim]
 
-date: 2021-03-17T08:00:00.169Z
+date: 2021-04-06T08:00:00.169Z
 
 draft: false
 
@@ -579,6 +579,6 @@ It was my intention to fully understand hiw the SAM pattern works under the hood
 
 The current version is cross importing the components and I think in a clean implementation this should be avoided using dependency injection. I leave this for a later iteration of this app and probably for another blogpost.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA1OTE1MTQxLDIxMDQ0NjY3MDksMTc3Mj
-M3MDAzOCwxNDA0NDAzMjY1XX0=
+eyJoaXN0b3J5IjpbLTY0MzQwMTExNCwyMTA0NDY2NzA5LDE3Nz
+IzNzAwMzgsMTQwNDQwMzI2NV19
 -->
