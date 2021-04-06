@@ -535,7 +535,7 @@ export  default  view;
 
   
 
-together with a `display` function which is injecting the derived representation into the DOM.
+It contains a `display` function which is injecting the derived representation into the DOM.
 
   
 
@@ -568,5 +568,5 @@ export  default  nap;
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzMTU1ODQ5NCwxNDA0NDAzMjY1XX0=
+eyJoaXN0b3J5IjpbMTc3MjM3MDAzOCwxNDA0NDAzMjY1XX0=
 -->
