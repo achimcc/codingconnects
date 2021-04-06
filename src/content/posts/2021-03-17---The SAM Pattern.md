@@ -575,8 +575,8 @@ This closes the reactive loop and finishes this sampel implementation of SAM.
 
 ## Concluding remarks
 
-It was my intention to fully understand hiw the SAM pattern works under the hood and 
+It was my intention to fully understand hiw the SAM pattern works under the hood and for this reason I decided to implement the pattern from scratch in favor of using a framework which implements it, like [Ravioli]
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwNDQ2NjcwOSwxNzcyMzcwMDM4LDE0MD
-Q0MDMyNjVdfQ==
+eyJoaXN0b3J5IjpbLTEyNTg1OTkwNDIsMjEwNDQ2NjcwOSwxNz
+cyMzcwMDM4LDE0MDQ0MDMyNjVdfQ==
 -->
