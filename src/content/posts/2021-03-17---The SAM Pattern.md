@@ -95,8 +95,10 @@ The cycle of interaction and re-rendering of the App is called the reactive loop
 
   
 
-## Towers of Hanoi
+## A sample implementation SAM for a browser game
 
+
+###  Towers of Hanoi
   
 
 I picked the [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) as a sample application to implement following the SAM pattern. To improve its usability, I implemented drag and drop. Since I want to focus on implementing the SAM pattern, I use an external library for the drag-and-drop interaction, which is [react-dnd](https://www.npmjs.com/package/react-dnd).
@@ -568,5 +570,6 @@ export  default  nap;
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3MjM3MDAzOCwxNDA0NDAzMjY1XX0=
+eyJoaXN0b3J5IjpbNjAxMzcxNTM5LDE3NzIzNzAwMzgsMTQwND
+QwMzI2NV19
 -->
