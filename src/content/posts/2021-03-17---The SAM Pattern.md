@@ -394,7 +394,7 @@ export  default  model;
 ```
 
   
-
+#### The state
 Subsequently the `state` defines the semantics of the `model`, it tells the `model'`s present function, how to interpret the data. It is using pure functions which evaluate the `model'`s data:
 
   
@@ -450,6 +450,7 @@ export  default  state;
 ```
 
   
+#### The view as a result of the model
 
 Eventually, the model derives the `stateRepresentation` in a declarative way from its data:
 
@@ -569,7 +570,9 @@ dispatch({ type:  "SOLVE" });
 export  default  nap;
 
 ```
+
+Tis closes the reactive loop and finishes this exc
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTI2ODkxMzksMTc3MjM3MDAzOCwxND
-A0NDAzMjY1XX0=
+eyJoaXN0b3J5IjpbLTc1MDc0MjQxMywxNzcyMzcwMDM4LDE0MD
+Q0MDMyNjVdfQ==
 -->
