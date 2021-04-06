@@ -63,7 +63,7 @@ All of my desired features can be implemented by applying the SAM pattern. And i
 
   
 
-Following the SAM pattern architecture, an app has a `view` which it derives out of the `model`'s data. Compared to redux, the data consists of a mutable object That is probably the most confusing part of the SAM pattern for me, and appears to be a drawback, compared to a Redux architecture, where we are always dealing with immutable objects.
+Following the SAM pattern architecture, an app has a `view` which it derives out of the `model`'s data. Compared to redux, the data consists of a mutable object. That is probably the most confusing part of the SAM pattern for me, and appears to be a drawback, compared to a Redux architecture, where we are always dealing with immutable objects.
 
   
 
@@ -568,5 +568,5 @@ export  default  nap;
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzODU2Njc3NTQsMTQwNDQwMzI2NV19
+eyJoaXN0b3J5IjpbMTkzMTU1ODQ5NCwxNDA0NDAzMjY1XX0=
 -->
