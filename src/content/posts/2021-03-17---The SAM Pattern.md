@@ -99,7 +99,7 @@ The cycle of interaction and re-rendering of the App is called the reactive loop
 ###  Towers of Hanoi
   
 
-I picked the [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) as a sample application to implement following the SAM pattern. To improve its usability, I implemented drag and drop. Since I want to focus on implementing the SAM pattern, I use an external library for the drag-and-drop interaction, which is [react-dnd](https://www.npmjs.com/package/react-dnd).
+I picked the [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) as a sample application to implement, while following the SAM pattern. To improve its usability, I implement the user interaction with drag and drop. Since I want to focus on implementing the SAM pattern, I use an external library for the drag-and-drop interaction, which is [react-dnd](https://www.npmjs.com/package/react-dnd).
 
   
 
@@ -577,6 +577,6 @@ It was my intention to fully understand hiw the SAM pattern works under the hood
 
 The current version is cross importing the components and I think in a clean implementation this should be avoided using dependency injection. I leave this for a later iteration of this app and probably for another blogpost.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjU4MTE5MSwtNjQzNDAxMTE0LDIxMD
+eyJoaXN0b3J5IjpbLTY1NTY4MjExNSwtNjQzNDAxMTE0LDIxMD
 Q0NjY3MDksMTc3MjM3MDAzOCwxNDA0NDAzMjY1XX0=
 -->
