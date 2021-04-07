@@ -37,9 +37,9 @@ image: img/marbles.jpg
 
   
 
-The [SAM Pattern](http://sam.js.org/) is an alternative to more well known architecture models like a Redux architecture or MVC. It goes back to [Jean-Jacques Dubray](https://github.com/jdubray) and his blog post [Why I No Longer Use MVC Frameworks](https://www.infoq.com/articles/no-more-mvc-frameworks/). It is also presented and explained in the last chapter of the book [Front-End Reactive Architectures](https://www.springer.com/de/book/9781484231791).
+The [SAM Pattern](http://sam.js.org/) is an alternative to more well known architecture models like a Redux architecture or [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller). It goes back to [Jean-Jacques Dubray](https://github.com/jdubray) and his blog post [Why I No Longer Use MVC Frameworks](https://www.infoq.com/articles/no-more-mvc-frameworks/). It is also presented and explained in the last chapter of the book [Front-End Reactive Architectures](https://www.springer.com/de/book/9781484231791).
 
-While I was searching for a frontend architecture which provides a clean separation of the business logic from the view, I stumbled over this pattern. In Redux, you can place some business logic into the reducer. In point of fact, the redux style guide recommends to [place as much logic as possible in reducers](https://redux.js.org/style-guide/style-guide#put-as-much-logic-as-possible-in-reducers). But very often this is not possible, since the reducer is a pure function which receives the old Redux and the action and computes the new store out of it. As a result the reducer can not handle an API or any other sort of asynchronous process.
+I stumbled over this patternWhile I was searching for a frontend architecture which provides a clean separation of the business logic from the view, . In Redux, you can place some business logic into the reducer. In point of fact, the redux style guide recommends to [place as much logic as possible in reducers](https://redux.js.org/style-guide/style-guide#put-as-much-logic-as-possible-in-reducers). But very often this is not possible, since the reducer is a pure function which receives the old Redux and the action and computes the new store out of it. As a result the reducer can not handle an API or any other sort of asynchronous process.
 
   
 
@@ -579,6 +579,6 @@ It was my intention to fully understand hiw the SAM pattern works under the hood
 
 The current version is cross importing the components and I think in a clean implementation this should be avoided using dependency injection. I leave this for a later iteration of this app and probably for another blogpost.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0MDIzMDE4NiwtNjQzNDAxMTE0LDIxMD
-Q0NjY3MDksMTc3MjM3MDAzOCwxNDA0NDAzMjY1XX0=
+eyJoaXN0b3J5IjpbLTE1OTk2MzAzNjQsLTY0MzQwMTExNCwyMT
+A0NDY2NzA5LDE3NzIzNzAwMzgsMTQwNDQwMzI2NV19
 -->
