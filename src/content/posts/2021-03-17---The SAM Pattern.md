@@ -39,11 +39,9 @@ image: img/marbles.jpg
 
 The [SAM Pattern](http://sam.js.org/) is an alternative to more well known architecture models like a Redux architecture or [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller). It goes back to [Jean-Jacques Dubray](https://github.com/jdubray) and his blog post [Why I No Longer Use MVC Frameworks](https://www.infoq.com/articles/no-more-mvc-frameworks/). It is also presented and explained in the last chapter of the book [Front-End Reactive Architectures](https://www.springer.com/de/book/9781484231791).
 
-I discovered this pattern during my search for a frontend architecture which provides a clean separation of the business logic from the view . In Redux, you can place some business logic into the reducer. In point of fact, the redux style guide recommends to [place as much logic as possible in reducers](https://redux.js.org/style-guide/style-guide#put-as-much-logic-as-possible-in-reducers). But very often this is not possible, since the reducer is a pure function which receives the old Redux and the action and computes the new store out of it. As a result the reducer can not handle an API or any other sort of asynchronous process.
+I discovered this pattern during my search for a frontend architecture which provides a clean separation of the business logic from the view. Cnsidering Redux, you can place some business logic into the reducer. In point of fact, the redux style guide recommends to [place as much logic as possible in reducers](https://redux.js.org/style-guide/style-guide#put-as-much-logic-as-possible-in-reducers). But very often this is not possible, since the reducer is a pure function which receives the old Redux and the action and computes the new store out of it. As a result the reducer can not handle an API or any other sort of asynchronous process.
 
-  
-
-It is my conviction that fronted components are the wrong place to store complex business logic, which is handling asynchronous events. In addition the reducers of a Redux store are not capable of it. Commonly a [Redux Middleware](https://redux.js.org/tutorials/fundamentals/part-4-store#middleware) like [Redux Observables](https://redux-observable.js.org/), [Redux Thunks](https://github.com/reduxjs/redux-thunk), [Redux Saga](https://github.com/reduxjs/redux-thunk) or [Redux Logic](https://github.com/jeffbski/redux-logic) is introduced to handle this. But this approach is using a heavy machinery, introduces a high level of complexity and depending on the choice of the middleware it might still lack some of my desired features like:
+It is my conviction that fronted components are the wrong place to store complex business logic, which is handling asynchronous events. In addition, the reducers of a Redux store are not capable of it. Commonly a [Redux Middleware](https://redux.js.org/tutorials/fundamentals/part-4-store#middleware) like [Redux Observables](https://redux-observable.js.org/), [Redux Thunks](https://github.com/reduxjs/redux-thunk), [Redux Saga](https://github.com/reduxjs/redux-thunk) or [Redux Logic](https://github.com/jeffbski/redux-logic) is introduced to handle this. But this approach is using a heavy machinery, introduces a high level of complexity and depending on the choice of the middleware it might still lack some of my desired features like:
 
   
 
@@ -579,6 +577,6 @@ It was my intention to fully understand hiw the SAM pattern works under the hood
 
 The current version is cross importing the components and I think in a clean implementation this should be avoided using dependency injection. I leave this for a later iteration of this app and probably for another blogpost.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NTg2NzYwNCwtNjQzNDAxMTE0LDIxMD
+eyJoaXN0b3J5IjpbLTE0MjU4MTE5MSwtNjQzNDAxMTE0LDIxMD
 Q0NjY3MDksMTc3MjM3MDAzOCwxNDA0NDAzMjY1XX0=
 -->
