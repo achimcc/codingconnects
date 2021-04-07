@@ -577,9 +577,9 @@ This closes the reactive loop and finishes this sampel implementation of SAM.
 
 It was my intention to fully understand hiw the SAM pattern works under the hood and for this reason I decided to implement the pattern from scratch in favor of using a framework which implements it, like [Ravioli](https://dev.to/dagatsoin/ravioli-framework-introduction-27pm). 
 
-The current version is cross importing the components and I think in a clean implementation this should be avoided using dependency injection. I leave this for a later iteration of this app and probably for another blogpost.
+The current version is cross importing the components and I think in a clean implementation this should be avoided using dependency injection. I leave this for a later iteration of this app and probably for another blog post.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDcxMzEwMjYsLTY1NTY4MjExNSwtNj
+eyJoaXN0b3J5IjpbLTE1MjQxMDg1NjYsLTY1NTY4MjExNSwtNj
 QzNDAxMTE0LDIxMDQ0NjY3MDksMTc3MjM3MDAzOCwxNDA0NDAz
 MjY1XX0=
 -->
