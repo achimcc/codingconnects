@@ -77,7 +77,7 @@ const About: React.FC = () => (
                 <p>
                   I created this Blog because I enjoy coding and I’m always keen about learning new
                   things. And because I'm a fan of an approach called
-                  <a href="https://www.swyx.io/learn-in-public/">Learn in Public</a>. I programmed
+                  <a href="https://www.swyx.io/learn-in-public/"> Learn in Public</a>. I programmed
                   it in TypeScript with Gatsby. I begun with a{' '}
                   <a href="https://github.com/scttcper/gatsby-casper">Gatsby Starter</a>
                   &nbsp; and I am gradually transforming it into something which fits my custom

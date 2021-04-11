@@ -23,7 +23,6 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
   const datetime = format(date, 'yyyy-MM-dd');
   // 20 AUG 2018
   const displayDatetime = format(date, 'dd LLL yyyy');
-  console.log('### frontmatter: ', post.frontmatter.category);
 
   return (
     <article
