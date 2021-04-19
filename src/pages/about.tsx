@@ -75,6 +75,12 @@ const About: React.FC = () => (
                   </figure>
                 </p>
                 <p>
+                  I work as a TypeScript and Blockchain Developer for
+                  <a href="https://parity.io">Parity Technologies</a>. Before this, I worked as an
+                  OutSystems Low-Code Developer. Here I contributed to many rapid prototyping and
+                  POC use cases. And I’ve one year of experience working as an IT Consultant.
+                </p>
+                <p>
                   I created this Blog because I enjoy coding and I’m always keen about learning new
                   things. And because I'm a fan of an approach called
                   <a href="https://www.swyx.io/learn-in-public/"> Learn in Public</a>. I programmed
@@ -96,13 +102,6 @@ const About: React.FC = () => (
                   interests. I might also pick up on political and environmental topics here. Hence,
                   I will sort my posts in fundamental categories, where coding relates to the
                   technical posts.
-                </p>
-                <p>
-                  I’m working as a TypeScript and Blockchain Developer, currently with a focus on
-                  Frontend development for <a href="https://parity.io">Parity</a>. Before this, I
-                  worked as an OutSystems Low-Code Developer. Here I contributed to many rapid
-                  prototyping and POC use cases. And I’ve one year of experience working as an IT
-                  Consultant.
                 </p>
                 <p>
                   I hold a diploma in mathematical physics in Algebraic Quantum Field Theory, and I
