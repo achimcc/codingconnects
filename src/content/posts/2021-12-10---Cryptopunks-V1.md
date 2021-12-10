@@ -10,7 +10,7 @@ tags:
   - 'Solidity'
   - 'ink'
   - 'Rust'
-excerpt: 'I discuss '
+excerpt: 'I discuss here a famous Solidity exploit and to which extent this exploit would have been possible with s Smart Contract written in Paritys ink!'
 image: 'img/punk.jpg'
 ---
 
