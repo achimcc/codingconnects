@@ -48,11 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
-      allMdx(
-        limit: 2000
-        sort: { fields: [frontmatter___date], order: ASC }
-        filter: { frontmatter: { draft: { ne: true } } }
-      ) {
+      allMdx(limit: 2000, sort: { fields: [frontmatter___date], order: ASC }) {
         edges {
           node {
             excerpt

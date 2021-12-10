@@ -2,9 +2,9 @@
 layout: post
 title: The Cryptopunks V1 Hack
 author: [Achim]
-date: 2020-12-06T09:40:32.169Z
-draft: false
-permalink: 'creating-a-react-library'
+date: 2021-12-10T09:40:32.169Z
+draft: true
+permalink: 'cryptopunk-bug'
 category: 'Coding'
 tags:
   - 'Solidity'
@@ -14,7 +14,17 @@ excerpt: 'I show how to set up a react library which I publish to Github, so I c
 image: 'img/library.jpg'
 ---
 
-```javascript
+I want to discuss here an important [Solidity](https://en.wikipedia.org/wiki/Solidity) [Smart Contract](https://en.wikipedia.org/wiki/Smart_contract) exploit. I wand to give some understanding, how it opccured and to which extent another Smart Contract Language, [ink!](https://github.com/paritytech/ink) by Parity Technologies would prevent such a bug by its inherent design principles.
+
+I focus on the Cryptopunks V1 exploit. [Cryptopunks](https://www.larvalabs.com/cryptopunks) are a series of NFT collectibles of some [real economic value](https://news.artnet.com/market/visa-purchased-first-cryptopunk-kickstarting-record-run-sales-popular-series-nfts-2002289).
+
+The Smart Contract code that I discuss here takes charge of the accounting of ownership of the NFTs. After a first security audit and its release, it turned out, that the Smart Contract carries a [highly problematic exploit](https://blog.quillhash.com/2021/08/11/nft-smart-contract-exploits-that-made-headlines-in-the-past/#CryptoPunks).
+
+It was just after all NFTs had been minted and the secondary marked kicked off that sellers realized, that they didn't receive the funds, buyers paid for their NFTs. Indeed, the buyers were possible to buy and pay an NFT, refund their paid amount and use the refund to buy the next NFT. The only possivble resolution was the instantiation of Cryptopunks V2, while V1 punks continued to exist.
+
+To gain a better understanding of the exploit, I state the [Source Code](https://github.com/cryptopunksnotdead/punks.contracts/blob/master/punks-v1/CryptoPunks.sol) of the Cryptopunks V1 Smart Contract here:
+
+```javascript{numberLines:0}
 pragma solidity ^0.4.8;
 contract CryptoPunks {
 
@@ -152,3 +162,61 @@ contract CryptoPunks {
     }
 }
 ```
+
+Lets see what happens if a use decides to buy a Cryptopunk:
+
+He sends a transaction request for the payable function `buyPunk(index)` in line 111, where `index` indicates which Punk he wants to buy, together with the required amount of Ether.
+
+The contract first instantiates `offer`, which is the following struct, as declared above in line 27 as: `offer = punksOfferedForSale[punkIndex]`:
+
+```javascript
+    struct Offer {
+        bool isForSale;
+        uint punkIndex;
+        address seller;
+        uint minValue;          // in ether
+        address onlySellTo;     // specify to sell only to a specific person
+    }
+```
+
+So `offer` carries the field `seller` which is the address of the seller of the contract, which will become relevant soon!
+
+Now, in line 133-116 we check that:
+
+1. The Punk is for sale
+
+2. If the Punk is only available to one specific account, this account address should equeal to the senders account address
+
+3. If the amount of Ether that the sender sent is to low, we cancel
+
+4. We cancel if the Seller no longer owns the Punk
+
+Now beginning with line 118, all validity checks have passed and from now on, the contract does all the accounting to transfer balances and ownerships for the purchase:
+
+Line 118 assigns the ownership of the punk to the sender of the message
+
+Line 119 and line 120 increase and decrease the amount of punks which are held by buyer and seller.
+
+Line 120 emits the `Transfer` event signalizing the transfer of a Punk to the Ethereum Blockchain.
+
+Line 122 deserves some attention: it executes the function `punkNoLongerForSale(punkIndex)`:
+
+```javascript
+    function punkNoLongerForSale(uint punkIndex) {
+        if (punkIndexToAddress[punkIndex] != msg.sender) throw;
+        punksOfferedForSale[punkIndex] = Offer(false, punkIndex, msg.sender, 0, 0x0);
+        PunkNoLongerForSale(punkIndex);
+    }
+```
+
+It first checks that the sender indeed acquired the Punk.
+
+Then it updates the `punksOfferedForSale` array by its new values, which seem to be legit: the position belonging to the acquired Punk with index `punkIndex` gets reassigned with the new `Offfer`: the punk is now no longer for sale, it obtains now the address of the sender `msg.sender` as its owner, and since it is no longer for sale, the `minValue` can be set to zero.
+
+Now in line 123, we request a new withdrawal for `offer.seller`, for the amount which has been send by `msg.seller`.
+
+Finally the contract triggers the `PunkBought` event since the buyal process is complete.
+
+So lets find the bug: Actually, things go wrong in line 123. We request a withdrawal here for `offer.seller`. And actually `offer.seller` is the `seller` field of `offer` and offer is a reference to `punksOfferedForSale[punkIndex]`, just look at line 111 above! But we reassigned `punksOfferedForSale[punkIndex]` in `punkNoLongerForSale` with the value: `punksOfferedForSale[punkIndex] = Offer(false, punkIndex, msg.sender, 0, 0x0)`, hence `offer.sender` had already been overwritten by the address `msg.sender`, so finally the Contract authorizes a withdrawal to the senders (=buyers) address instead to the sellers address!
+
+The underlying reason why this happened, is that by design Solidity is a [pass-by-reference](https://www.cs.fsu.edu/~myers/c++/notes/references.html) language. It doesn't assign values, but references to values.
