@@ -10,8 +10,8 @@ tags:
   - 'Solidity'
   - 'ink'
   - 'Rust'
-excerpt: 'I show how to set up a react library which I publish to Github, so I can import it into a React project as a dependency. There is a powerful tool which allows to do a boilerplate approach to build a library: create-react-library.'
-image: 'img/library.jpg'
+excerpt: 'I discuss '
+image: 'img/punk.jpg'
 ---
 
 I want to discuss here an important [Solidity](https://en.wikipedia.org/wiki/Solidity) [Smart Contract](https://en.wikipedia.org/wiki/Smart_contract) exploit. I wand to give some understanding, how it opccured and to which extent another Smart Contract Language, [ink!](https://github.com/paritytech/ink) by Parity Technologies would prevent such a bug by its inherent design principles.

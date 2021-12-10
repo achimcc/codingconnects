@@ -156,7 +156,7 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
           />
         )}
         <meta name="twitter:label1" content="Written by" />
-        <meta name="twitter:data1" content={post.frontmatter.author[0].id} />
+        <meta name="twitter:data1" content={post.frontmatter.author[0]?.id} />
         <meta name="twitter:label2" content="Filed under" />
         {post.frontmatter.category && (
           <meta name="twitter:data2" content={post.frontmatter.category} />
