@@ -14,9 +14,9 @@ excerpt: 'I discuss here a famous Solidity exploit and to which extent this expl
 image: 'img/punk.jpg'
 ---
 
-I want to discuss here an important [Solidity](https://en.wikipedia.org/wiki/Solidity) [Smart Contract](https://en.wikipedia.org/wiki/Smart_contract) exploit. I wand to give some understanding, how it opccured and to which extent another Smart Contract Language, [ink!](https://github.com/paritytech/ink) by Parity Technologies would prevent such a bug by its inherent design principles.
+I focus here on an important [Solidity](https://en.wikipedia.org/wiki/Solidity) [Smart Contract](https://en.wikipedia.org/wiki/Smart_contract) exploit. I provide some background on how it opccured and to which extent another Smart Contract Language, [ink!](https://github.com/paritytech/ink) by Parity Technologies would prevent such a bug by its inherent design principles.
 
-I focus on the Cryptopunks V1 exploit. [Cryptopunks](https://www.larvalabs.com/cryptopunks) are a series of NFT collectibles of some [real economic value](https://news.artnet.com/market/visa-purchased-first-cryptopunk-kickstarting-record-run-sales-popular-series-nfts-2002289).
+I picked the Cryptopunks V1 exploit. [Cryptopunks](https://www.larvalabs.com/cryptopunks) are a series of NFT collectibles of some [real economic value](https://news.artnet.com/market/visa-purchased-first-cryptopunk-kickstarting-record-run-sales-popular-series-nfts-2002289).
 
 The Smart Contract code that I discuss here takes charge of the accounting of ownership of the NFTs. After a first security audit and its release, it turned out, that the Smart Contract carries a [highly problematic exploit](https://blog.quillhash.com/2021/08/11/nft-smart-contract-exploits-that-made-headlines-in-the-past/#CryptoPunks).
 
