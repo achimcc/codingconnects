@@ -219,4 +219,20 @@ Finally the contract triggers the `PunkBought` event since the buyal process is 
 
 So lets find the bug: Actually, things go wrong in line 123. We request a withdrawal here for `offer.seller`. And actually `offer.seller` is the `seller` field of `offer` and offer is a reference to `punksOfferedForSale[punkIndex]`, just look at line 111 above! But we reassigned `punksOfferedForSale[punkIndex]` in `punkNoLongerForSale` with the value: `punksOfferedForSale[punkIndex] = Offer(false, punkIndex, msg.sender, 0, 0x0)`, hence `offer.sender` had already been overwritten by the address `msg.sender`, so finally the Contract authorizes a withdrawal to the senders (=buyers) address instead to the sellers address!
 
-The underlying reason why this happened, is that by design Solidity is a [pass-by-reference](https://www.cs.fsu.edu/~myers/c++/notes/references.html) language. It doesn't assign values, but references to values.
+The underlying reason why this happened is that by design Solidity is a [pass-by-reference](https://www.cs.fsu.edu/~myers/c++/notes/references.html) language. If a function receives or returns a value, it is passing not a copy of the value, but a reference to it. In this case the function accepting and returning references is the mapping `punksOfferedForSale`. Solidity allows you here to assign mutiple references to the same variable and the stored value of the variable can be mutated by any of these.
+
+In Rust, we decide between mutable and immutable references. And Rust comes by design with a build in borrow checker. While Rust allows you to define multiple references to a variable, the borrow checker takes care that you can't have multiple mutable references to the same variable. It also forbids to have immutable references together with one mutable reference. Or even read access to the original variable while having a mutable reference to it. For example, trying to compile the following piece of Rust code throws an error:
+
+```rust
+fn main() {
+let mut x = 5;
+let y = &mut x; // ! mutable borrow of x
+
+*y += 1;
+
+println!("{}", x); // ! trying to read variable while still borrowed as mutable
+println!("{}", y); // -> mutable borrow of x ends
+}
+```
+
+This concept of strong ownership which the borrow checker enforces is usally useful to prevent race conditions. But it also make this kind of "opaque" modification of offer impossible, which is defined in line 112 of the crypotpunks sourcecode and which happens afterwards in line 95 when calling the `punkNoLongerForSale` subfunction.
